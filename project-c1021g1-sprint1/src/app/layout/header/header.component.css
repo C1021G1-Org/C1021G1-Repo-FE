@@ -15,6 +15,9 @@ html,body{
     max-width: 265px;
   }
 }
+.navbar-nav{
+
+}
 
 .navbar-toggler{
   background-color: white;
@@ -32,4 +35,10 @@ html,body{
 }
 .nav-font{
 
+}
+.fa-user-circle{
+  color: white;
+}
+.custom-select{
+  width: 150px;
 }

@@ -14,5 +14,22 @@
 </head>
 <body>
   <app-root></app-root>
+  <button id="myBtn" class="btn btn-dark btn-lg float-right" title="Lên đầu trang"><i class="fa fa-arrow-circle-up" aria-hidden="true"></i></button>
+  <script>
+    window.onscroll = function() {scrollFunction()};
+    function scrollFunction() {
+
+      if (document.body.scrollTop > 600 || document.documentElement.scrollTop > 600) {
+        document.getElementById("myBtn").style.display = "block";
+      } else {
+        document.getElementById("myBtn").style.display = "none";
+      }
+    }
+
+    document.getElementById('myBtn').addEventListener("click", function(){
+      document.body.scrollTop = 0;
+      document.documentElement.scrollTop = 0;
+    });
+  </script>
 </body>
 </html>
