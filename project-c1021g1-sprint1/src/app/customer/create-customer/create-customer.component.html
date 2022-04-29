@@ -1,1 +1,248 @@
-<p>create-customer works!</p>
+
+
+<!--<section class=" section1 ">-->
+<!--  <div class="container-fluid" style="background: rgba(255, 255, 255,0.8)">-->
+<!--    <div class="row">-->
+<!--      <div class="col-md-2 " style="margin-top: 80px;background: rgba(255, 255, 255,0.5)">-->
+
+<!--        <table class="table ">-->
+
+<!--          <thead class="table-dark">-->
+<!--          <tr>-->
+<!--            <td>Chức Năng</td>-->
+<!--          </tr>-->
+<!--          </thead>-->
+<!--          <tbody>-->
+<!--          <tr>-->
+<!--            <td><h6>Quản lý khách hàng <i class="fa fa-angle-down" style="font-size:24px"></i></h6></td>-->
+<!--          </tr>-->
+<!--          <tr>-->
+<!--            <td><i class="fa fa-arrow-right" style="font-size:15px"></i>Thanh toán</td>-->
+<!--          </tr>-->
+<!--          <tr>-->
+<!--            <td><i class="fa fa-arrow-right" style="font-size:15px"></i>Lịch sử giao dịch</td>-->
+<!--          </tr>-->
+<!--          <tr></tr>-->
+<!--          <tr>-->
+<!--            <td><h6>Quản trị viên <i class="fa fa-angle-down" style="font-size:24px"></i></h6></td>-->
+<!--          </tr>-->
+<!--          <tr>-->
+<!--            <td><i class="fa fa-arrow-right" style="font-size:15px"></i>Thông tin admin</td>-->
+<!--          </tr>-->
+<!--          <tr>-->
+<!--            <td><i class="fa fa-arrow-right" style="font-size:15px"></i>Quản lí nhân viên</td>-->
+<!--          </tr>-->
+<!--          <tr></tr>-->
+
+<!--          <tr>-->
+<!--            <td><h6>Quản lí nhân viên <i class="fa fa-angle-down" style="font-size:24px"></i></h6></td>-->
+
+<!--          </tr>-->
+<!--          <tr>-->
+<!--            <td><i class="fa fa-arrow-right" style="font-size:15px"></i>Quản lí khách hàng</td>-->
+<!--          </tr>-->
+<!--          <tr>-->
+<!--            <td><i class="fa fa-arrow-right" style="font-size:15px"></i>Quản lí bán vé</td>-->
+<!--          </tr>-->
+<!--          &lt;!&ndash;            <tr>&ndash;&gt;-->
+<!--          &lt;!&ndash;                <td><i class="fa fa-arrow-right" style="font-size:15px"></i>Đặt vé</td>&ndash;&gt;-->
+<!--          &lt;!&ndash;            </tr>&ndash;&gt;-->
+<!--          &lt;!&ndash;            <tr>&ndash;&gt;-->
+<!--          &lt;!&ndash;                <td><i class="fa fa-arrow-right" style="font-size:15px"></i>Thống kê</td>&ndash;&gt;-->
+<!--          &lt;!&ndash;            </tr>&ndash;&gt;-->
+<!--          </tbody>-->
+<!--        </table>-->
+
+<!--      </div>-->
+
+<!--      <div class="col-md-6 order-md-1" style="margin-top: 80px ">-->
+<!--        <h4 class="mb-3">Thêm Mới Khách Hàng</h4>-->
+<!--        <form class="needs-validation was-validated" novalidate="" [formGroup]="customer" (ngSubmit)="save()">-->
+<!--          <div class="mb-3">-->
+<!--            <label for="username">Họ và tên <span class="text-danger">(*)</span>:</label>-->
+<!--            <div class="input-group">-->
+<!--              <input type="text" class="form-control" id="username" placeholder="Nhập tên" required="" formGroupName="nameCustomer">-->
+<!--              <div class="invalid-feedback" style="width: 100%;">-->
+<!--                Vui lòng nhập họ và tên!-->
+<!--              </div>-->
+<!--            </div>-->
+<!--          </div>-->
+<!--          <div class="d-block my-3 d-flex ">-->
+
+<!--            <label>Giới tính <span class="text-danger">(*)</span>: </label>-->
+
+<!--            <div class="custom-control custom-radio  mx-2 " formGroupName="genderCustomer">-->
+<!--              <input id="a" name="paymentMethod" type="radio" class="custom-control-input mx-2" [value]="true">-->
+<!--              <label class="custom-control-label mx-2" for="a">Nam 🙎‍♂</label>-->
+<!--            </div>-->
+<!--            <div class="custom-control custom-radio  mx-2">-->
+<!--              <input id="b" name="paymentMethod" type="radio" class="custom-control-input mx-2" [value]="false">-->
+<!--              <label class="custom-control-label mx-2" for="b">Nữ 🙎🏻‍♀</label>-->
+<!--            </div>-->
+<!--            <div class="custom-control custom-radio  mx-2">-->
+<!--              <input id="c" name="paymentMethod" type="radio" class="custom-control-input mx-2" [value]="null">-->
+<!--              <label class="custom-control-label mx-2" for="c">Khác ⚧</label>-->
+
+<!--            </div>-->
+
+<!--          </div>-->
+
+
+<!--          <div class="row">-->
+<!--            <div class="col-md-6 mb-3">-->
+<!--              <label for="firstName">Email <span class="text-danger">(*)</span>: </label>-->
+<!--              <input type="text" class="form-control" id="firstName" placeholder="abc@gmail.com" value="" formGroupName="emailCustomer"-->
+<!--                     required="">-->
+<!--              <div class="invalid-feedback">-->
+<!--                Vui lòng nhập email!-->
+<!--              </div>-->
+<!--            </div>-->
+<!--            <div class="col-md-6 mb-3">-->
+<!--              <label for="lastName">Ngày sinh <span class="text-danger">(*)</span>:</label>-->
+<!--              <input type="date" class="form-control" id="lastName" placeholder="" value="" required="" formGroupName="birthdayCustomer">-->
+<!--              <div class="invalid-feedback">-->
+<!--                Vui lòng nhập Ngày sinh!-->
+<!--              </div>-->
+<!--            </div>-->
+<!--          </div>-->
+
+<!--          <div class="row">-->
+<!--            <div class="col-md-6 mb-3">-->
+<!--              <label for="Name">Điện Thoại <span class="text-danger">(*)</span>: </label>-->
+<!--              <input type="text" class="form-control" id="Name" placeholder="Nhập số điện thoại" value="" formGroupName="phoneCustomer"-->
+<!--                     required="">-->
+<!--              <div class="invalid-feedback">-->
+<!--                Vui lòng nhập số điện thoại!-->
+<!--              </div>-->
+<!--            </div>-->
+<!--            <div class="col-md-6 mb-3">-->
+<!--              <label for="last">CMND - Passport <span class="text-danger">(*)</span>:</label>-->
+<!--              <input type="text" class="form-control" id="last" placeholder="Nhập CMND" value="" required="" formGroupName="idCardCustomer">-->
+<!--              <div class="invalid-feedback">-->
+<!--                Vui lòng nhập CMND!-->
+<!--              </div>-->
+<!--            </div>-->
+<!--          </div>-->
+<!--          <div class="row">-->
+<!--            <div class="col-md-6 mb-3">-->
+<!--              <label for="address">Địa chỉ <span class="text-danger">(*)</span>: </label>-->
+<!--              <input type="text" class="form-control" id="address" placeholder="Nhập địa chỉ" required="" formGroupName="addressCustomer">-->
+<!--              <div class="invalid-feedback">-->
+<!--                Vui lòng nhập địa chỉ!-->
+<!--              </div>-->
+<!--            </div>-->
+<!--            <div class="col-md-6 mb-3">-->
+<!--              <label for="country">Quốc tịch <span class="text-danger">(*)</span>:</label>-->
+<!--              <select class="form-control" id="country" formGroupName="countries">-->
+<!--                <option selected disabled>Chọn...</option>-->
+<!--                <option *ngFor="let type of country" [ngValue]="type">{{type.country}}</option>-->
+<!--              </select>-->
+<!--              <div class="invalid-feedback">-->
+<!--                Vui lòng nhập quốc tịch!-->
+<!--              </div>-->
+<!--            </div>-->
+<!--          </div>-->
+<!--          <div class="row">-->
+<!--            <div class="col-md-6 mb-auto">-->
+<!--              <label for="customer-type">Loại khách hàng <span class="text-danger">(*)</span>:</label>-->
+<!--              <select name="" id="customer-type" required="" class="form-control" formGroupName="customerType">-->
+<!--                <option selected disabled>Chọn...</option>-->
+<!--                <option *ngFor="let type of customerType" [ngValue]="type">{{type.nameCustomerType}}</option>-->
+<!--              </select>-->
+<!--              <div class="invalid-feedback">-->
+<!--                Vui lòng chọn!-->
+<!--              </div>-->
+<!--            </div>-->
+<!--          </div>-->
+
+<!--          <div class="d-grid m-2 d-md-flex justify-content-md-end">-->
+<!--            <div class="m-2">-->
+<!--              <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#exampleModal">Trở về-->
+<!--              </button>-->
+<!--            </div>-->
+<!--            <div class="m-2">-->
+<!--              <button type="button" class="btn btn-primary">Lưu lại</button>-->
+<!--            </div>-->
+
+<!--          </div>-->
+<!--          <br>-->
+<!--        </form>-->
+<!--      </div>-->
+
+<!--      <div class="col-md-4 order-md-2 mb-4" style="margin-top: 80px">-->
+<!--        <h4 class="d-flex justify-content-between align-items-center mb-3">-->
+<!--          <span class="text-muted">Thông tin về các chuyến bay:</span>-->
+<!--          <span class="badge badge-secondary badge-pill">3</span>-->
+<!--        </h4>-->
+<!--        <ul class="list-group mb-3">-->
+<!--          <li class="list-group-item d-flex justify-content-between lh-condensed">-->
+<!--            <div>-->
+<!--              <h6 class="my-0">Đà Nẵng &ndash;&gt; Hồ Chí Minh</h6>-->
+<!--              <small class="text-muted">18h &ndash;&gt; 19h</small>-->
+<!--              <small class="text-muted">26/04/2022</small>-->
+<!--            </div>-->
+
+<!--            <span class="text-muted">2.700.000 vnđ</span>-->
+<!--          </li>-->
+<!--          <li class="list-group-item d-flex justify-content-between lh-condensed">-->
+<!--            <div>-->
+<!--              <h6 class="my-0">Đà Nẵng &ndash;&gt; Hà Nội</h6>-->
+<!--              <small class="text-muted">19h &ndash;&gt; 20h</small>-->
+<!--              <small class="text-muted">26/04/202</small>-->
+<!--            </div>-->
+<!--            <span class="text-muted">2.700.000 vnđ</span>-->
+<!--          </li>-->
+<!--          <li class="list-group-item d-flex justify-content-between lh-condensed">-->
+<!--            <div>-->
+<!--              <h6 class="my-0">Đà Nẵng &ndash;&gt; Cần Thơ</h6>-->
+<!--              <small class="text-muted">20h &ndash;&gt; 21h</small>-->
+<!--            </div>-->
+<!--            <span class="text-muted">1.200.000 vnđ</span>-->
+<!--          </li>-->
+<!--          <li class="list-group-item d-flex justify-content-between bg-light">-->
+<!--            <div class="text-success">-->
+<!--              <h6 class="my-0">Đà Nẵng &ndash;&gt; TP.Vinh</h6>-->
+<!--              <small>Đang thực hiện...</small>-->
+<!--            </div>-->
+<!--            <span class="text-success">Đang bay...</span>-->
+<!--          </li>-->
+<!--        </ul>-->
+
+<!--        <form class="card p-2">-->
+<!--          <div class="input-group">-->
+<!--            <input type="text" class="form-control" placeholder="Vui lòng nhập">-->
+<!--            <div class="input-group-append">-->
+<!--              <button type="submit" class="btn btn-secondary">Tìm Chuyến bay</button>-->
+<!--            </div>-->
+<!--          </div>-->
+<!--        </form>-->
+<!--      </div>-->
+<!--    </div>-->
+
+<!--  </div>-->
+
+<!--</section>-->
+
+<!--&lt;!&ndash; Modal &ndash;&gt;-->
+<!--<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"-->
+<!--     aria-hidden="true">-->
+<!--  <div class="modal-dialog" role="document">-->
+<!--    <div class="modal-content">-->
+<!--      <div class="modal-header">-->
+<!--        <h5 class="modal-title" id="exampleModalLabel">Xác nhận hủy</h5>-->
+<!--        <button type="button" class="close" data-dismiss="modal" aria-label="Close">-->
+<!--          <span aria-hidden="true">&times;</span>-->
+<!--        </button>-->
+<!--      </div>-->
+<!--      <div class="modal-body">-->
+<!--        Bạn có chắc chắn muốn trở lại không?-->
+<!--      </div>-->
+<!--      <div class="modal-footer">-->
+<!--        <button type="button" class="btn btn-secondary" data-dismiss="modal">Không</button>-->
+<!--        <button type="button" class="btn btn-danger" routerLink="/list-customer">Có</button>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--  </div>-->
+<!--</div>-->
+
+

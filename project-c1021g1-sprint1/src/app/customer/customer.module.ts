@@ -8,13 +8,19 @@ import { EditCustomerComponent } from './edit-customer/edit-customer.component';
 import { EditCustomerByEmployeeComponent } from './edit-customer-by-employee/edit-customer-by-employee.component';
 import { ViewCustomerComponent } from './view-customer/view-customer.component';
 import { DeleteCustomerComponent } from './delete-customer/delete-customer.component';
+import {ReactiveFormsModule} from "@angular/forms";
 
 
 @NgModule({
-  declarations: [CreateCustomerComponent, ListCustomerComponent, EditCustomerComponent, EditCustomerByEmployeeComponent, ViewCustomerComponent, DeleteCustomerComponent],
-  imports: [
-    CommonModule,
-    CustomerRoutingModule
-  ]
+    declarations: [CreateCustomerComponent, ListCustomerComponent, EditCustomerComponent, EditCustomerByEmployeeComponent, ViewCustomerComponent, DeleteCustomerComponent],
+    exports: [
+        CreateCustomerComponent,
+        ListCustomerComponent
+    ],
+    imports: [
+        CommonModule,
+        CustomerRoutingModule,
+        ReactiveFormsModule
+    ]
 })
 export class CustomerModule { }
