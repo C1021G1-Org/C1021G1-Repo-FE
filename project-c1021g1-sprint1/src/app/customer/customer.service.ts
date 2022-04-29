@@ -10,7 +10,7 @@ import {ICountries} from "./model/ICountries";
 export class CustomerService {
 
   private readonly URL_CUSTOMER = 'http://localhost:8080';
-  private readonly URL_CUSTOMERTYPE = 'http://localhost:8080';
+  private readonly URL_CUSTOMER_TYPE = 'http://localhost:8080';
   private readonly URL_COUNTRIES = 'http://localhost:8080';
 
   constructor(private httpClient: HttpClient) { }
@@ -19,7 +19,7 @@ export class CustomerService {
     return this.httpClient.get<ICustomer[]>(this.URL_CUSTOMER + "/customer/list");
   }
   getAllCustomerType() {
-    return  this.httpClient.get<ICustomerType[]>(this.URL_CUSTOMERTYPE + "/customer/customerType")
+    return  this.httpClient.get<ICustomerType[]>(this.URL_CUSTOMER_TYPE + "/customer/customerType")
   }
   getAllCountries() {
     return this.httpClient.get<ICountries[]>(this.URL_COUNTRIES + "/customer/countries")
