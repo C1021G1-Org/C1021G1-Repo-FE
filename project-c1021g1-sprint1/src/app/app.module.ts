@@ -30,6 +30,7 @@ import {CdkTableModule} from "@angular/cdk/table";
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     AppRoutingModule,
     FormsModule,
     MatSnackBarModule,
@@ -39,7 +40,6 @@ import {CdkTableModule} from "@angular/cdk/table";
     MatDatepickerModule,
     MatInputModule,
     DragDropModule,
-    BrowserAnimationsModule,
     NgxPaginationModule,
     CdkTableModule
   ],
