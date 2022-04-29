@@ -1,3 +1,4 @@
+
 <div class="container-fluid">
   <div class="row">
     <div class="col-2">
@@ -67,12 +68,12 @@
           <div class="row">
             <div class="col-6">
               <label for="ck" >Chọn kiểu:</label>
-              <select id="ck" class="form-control">
-                <option value="">---Chọn---</option>
-                <option value="">Bảng</option>
-                <option value="">Hình tròn</option>
-                <option value="">Hình trụ</option>
-                <option value=""></option>
+              <select id="ck" class="form-control" [(ngModel)]="selectShape">
+                <option value="true">---Chọn---</option>
+                <option [value]="0">Bảng</option>
+                <option [value]="1">Hình tròn</option>
+                <option [value]="2">Hình trụ</option>
+
               </select>
             </div>
             <div class="col-6">
@@ -182,6 +183,7 @@
       <p class="m-3">Thời gian 1: Từ 04/05/2022 đến: 05/04/2022</p>
       <p class="m-3">Thời gian 2: Từ 11/01/2022 đến: 12/02/2022</p>
       <div id="container"></div>
+      <div id="chart"></div>
 
       <span class="text-center">
                 Thời gian 1: 120.000.000VND |
