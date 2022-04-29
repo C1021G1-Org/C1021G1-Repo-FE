@@ -1,0 +1,20 @@
+footer{
+  /*background: rgba(217,26,33,1) !important;*/
+  color: black;
+}
+hr.light{
+  border-top: 1px solid black;
+width: 90%;
+}
+.logo{
+  width: 200px;
+  height: 95px;
+  top: 50%;
+  max-width: 500px;
+  object-fit: cover;
+}
+.light-100{
+  border-top: 1px solid #d5d5d5;
+  width: 100%;
+}
+
