@@ -31,6 +31,7 @@ import {CustomerModule} from "./customer/customer.module";
   ],
     imports: [
         BrowserModule,
+      BrowserAnimationsModule,
         AppRoutingModule,
         FormsModule,
         MatSnackBarModule,
@@ -40,7 +41,6 @@ import {CustomerModule} from "./customer/customer.module";
         MatDatepickerModule,
         MatInputModule,
         DragDropModule,
-        BrowserAnimationsModule,
         NgxPaginationModule,
         CdkTableModule,
         CustomerModule
