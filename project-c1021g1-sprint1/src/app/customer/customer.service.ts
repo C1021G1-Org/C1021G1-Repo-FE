@@ -39,8 +39,8 @@ export class CustomerService {
 
 
   // TinhHD lấy id
-  finByIdCustomer(id: number) {
-    return this.httpClient.get(this.URL_BE + '/customer/' + id)
+  finByIdCustomer(id: number): Observable<ICustomerDto> {
+    return this.httpClient.get<ICustomerDto>(this.URL_BE + '/customer/' + id)
   }
 
   //TinhHD thêm một đối tượng
@@ -49,7 +49,7 @@ export class CustomerService {
   }
 
   //TinhHD update một đối tượng
-  updateCustomer(id, data) {
-    return this.httpClient.patch(`${this.URL_BE}/${id}`, data);
+  updateCustomer(id, data): Observable<ICustomerDto> {
+    return this.httpClient.patch<ICustomerDto>(this.URL_BE + '/customer/' + id ,JSON.stringify(data));
   }
 }
