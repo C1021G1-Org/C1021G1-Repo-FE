@@ -147,14 +147,14 @@
             <div class="col-md-6 mb-3">
               <label for="customer-type">Loại khách hàng <span class="text-danger">(*)</span>:</label>
               <select id="customer-type" class="form-control" formControlName="customerType">
-                <option *ngFor="let type of customerType" [value]="type.id" [selected]="type.id==customer.get('customerType').value.id">
+                <option *ngFor="let type of customerType" [ngValue]="type.id" [selected]="type.id==customer.get('customerType').value.id">
                   {{type.nameCustomerType}}</option>
               </select>
             </div>
             <div class="col-md-6 mb-3">
               <label for="country">Quốc tịch <span class="text-danger">(*)</span>:</label>
               <select class="form-control" id="country" formControlName="countries">
-                <option *ngFor="let type of country" [value]="type.id" [selected]="type.id==customer.get('countries').value.id">
+                <option *ngFor="let type of country" [ngValue]="type.id" [selected]="type.id==customer.get('countries').value.id">
                   {{type.country}}</option>
               </select>
             </div>

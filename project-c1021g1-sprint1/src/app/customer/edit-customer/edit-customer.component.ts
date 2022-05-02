@@ -51,7 +51,7 @@ export class EditCustomerComponent implements OnInit {
 
 
   ngOnInit(): void {
-    this.customer = this.formBuilder.group({
+    this.customer = new FormGroup({
       id: new FormControl(''),
       nameCustomer: new FormControl('', [Validators.required, Validators.pattern(/^[a-zA-Z\'-\'\\sáàảãạăâắằấầặẵẫậéèẻ ẽẹếềểễệóêòỏõọôốồổỗộ ơớờởỡợíìỉĩịđùúủũụưứ� �ửữựÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚĂĐĨŨƠ ƯĂẠẢẤẦẨẪẬẮẰẲẴẶẸẺẼ� ��ỀỂỄỆỈỊỌỎỐỒỔỖỘỚỜỞ ỠỢỤỨỪỬỮỰỲỴýÝỶỸửữựỵ ỷỹ]*$/), Validators.maxLength(40)]),
       genderCustomer: new FormControl('',),
@@ -82,14 +82,10 @@ export class EditCustomerComponent implements OnInit {
 
   update() {
     if (this.customer.valid) {
-      this.customerService.updateCustomer(this.active.snapshot.paramMap.get('id'), this.customer.value).subscribe(data => {
-
+      this.customerService.updateCustomer(Number(this.active.snapshot.paramMap.get('id')), this.customer.value).subscribe(data => {
         this.router.navigateByUrl('/list-customer');
-        console.log(this.active.snapshot.paramMap.get('id'), this.customer.value)
         this.snackBar.open('Đã cập nhật thành công', 'OK');
-        console.log(data);
       }, error => {
-        console.log(this.customer.value)
         console.log(error);
         this.snackBar.open('Dữ liệu đang bị lỗi', 'OK');
       });
