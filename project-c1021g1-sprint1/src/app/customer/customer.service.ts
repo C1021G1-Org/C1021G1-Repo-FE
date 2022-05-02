@@ -15,7 +15,7 @@ export class CustomerService {
 
   httpOptions = {
     headers: new HttpHeaders({
-      'Content-Type': 'application/json'
+      'Content-Type': 'application/json; text/plain;charset=UTF-8',
     }),
     'Access-Control-Allow-Origin': 'http://localhost:4200',
     'Access-Control-Allow-Methods': 'GET,PUT,POST,DELETE,PATCH,OPTIONS'
@@ -39,17 +39,19 @@ export class CustomerService {
 
 
   // TinhHD lấy id
-  finByIdCustomer(id: number) {
-    return this.httpClient.get(this.URL_BE + '/customer/' + id)
+  finByIdCustomer(id: number): Observable<ICustomerDto> {
+    return this.httpClient.get<ICustomerDto>(this.URL_BE + '/customer/' + id)
   }
 
   //TinhHD thêm một đối tượng
   save(data: ICustomerDto): Observable<ICustomerDto> {
     return this.httpClient.post<ICustomerDto>(this.URL_BE + '/customer/create', JSON.stringify(data), this.httpOptions);
   }
-
+  customer:ICustomerDto
   //TinhHD update một đối tượng
-  updateCustomer(id, data) {
-    return this.httpClient.patch(`${this.URL_BE}/${id}`, data);
+  updateCustomer(id:number, data): Observable<ICustomerDto> {
+    console.log(id)
+    console.log(data)
+    return this.httpClient.patch<ICustomerDto>(this.URL_BE + '/customer/' + id ,data);
   }
 }

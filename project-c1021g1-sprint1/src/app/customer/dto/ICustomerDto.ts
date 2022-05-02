@@ -2,11 +2,11 @@ import {ICountries} from "../model/ICountries";
 import {ICustomerType} from "../model/ICustomerType";
 
 export interface ICustomerDto {
-  id: number;
+  id: any;
   nameCustomer: string;
   genderCustomer: boolean;
-  birthdayCustomer: string;
   idCardCustomer: string;
+  birthdayCustomer: string;
   phoneCustomer: string;
   emailCustomer: string;
   addressCustomer: string;
