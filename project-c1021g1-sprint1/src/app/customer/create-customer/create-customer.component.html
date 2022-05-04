@@ -120,7 +120,7 @@
               <span *ngIf="customer.get('birthdayCustomer').hasError('required')" class="validator float-right">
                                         Lưu ý : chọn ngày sinh.
                 </span>
-              <input type="date" class="form-control" id="lastName" placeholder=""  required=""
+              <input type="date" class="form-control" id="lastName" placeholder="" required=""
                      formControlName="birthdayCustomer">
             </div>
           </div>
@@ -176,9 +176,10 @@
           <br>
 
           <div class="row">
-            <div class="col-md-12  justify-content-md-center d-flex" >
-                <button type="button" class="btn btn-secondary mx-md-3" data-toggle="modal" data-target="#exampleModal">Trở về
-                </button>
+            <div class="col-md-12  justify-content-md-center d-flex">
+              <button type="button" class="btn btn-secondary mx-md-3" data-toggle="modal" data-target="#exampleModal">
+                Trở về
+              </button>
 
               <button type="submit" class="btn btn-primary mx-md-3" [disabled]="customer.invalid">Lưu lại</button>
             </div>
