@@ -79,10 +79,9 @@ export class CreateCustomerComponent implements OnInit {
     if (this.customer.valid) {
       this.customerService.save(this.customer.value).subscribe(
         (next) => {
-          // this.route.navigateByUrl('list-customer');
           this.snackBar.open('Thêm mới thành công khách hàng có tên là ' + this.customer.get('nameCustomer').value + ("."), 'OK');
+          this.customer.reset()
         }, error => {
-
           this.snackBar.open('Thêm mới không thành công', 'OK');
         }
       );

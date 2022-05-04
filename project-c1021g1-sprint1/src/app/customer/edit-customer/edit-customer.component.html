@@ -147,27 +147,26 @@
             <div class="col-md-6 mb-3">
               <label for="customer-type">Loại khách hàng <span class="text-danger">(*)</span>:</label>
               <select id="customer-type" class="form-control" formControlName="customerType">
-                <option *ngFor="let type of customerType" [ngValue]="type.id" [selected]="type.id==customer.get('customerType').value.id">
+                <option *ngFor="let type of customerType" [ngValue]="type" [selected]="type.id==customer.get('customerType').value.id">
                   {{type.nameCustomerType}}</option>
               </select>
             </div>
             <div class="col-md-6 mb-3">
               <label for="country">Quốc tịch <span class="text-danger">(*)</span>:</label>
               <select class="form-control" id="country" formControlName="countries">
-                <option *ngFor="let type of country" [ngValue]="type.id" [selected]="type.id==customer.get('countries').value.id">
+                <option *ngFor="let type of country" [ngValue]="type" [selected]="type.id==customer.get('countries').value.id">
                   {{type.country}}</option>
               </select>
             </div>
           </div>
 
-
-          <div class="d-grid m-2 d-md-flex justify-content-md-center">
-            <div class="m-2">
-              <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#exampleModal">Trở về
+          <div class="row">
+            <div class="col-md-12 mx-2 justify-content-md-center d-flex" >
+              <div style="clear: right">
+              <button type="button" class="btn btn-secondary mx-md-4" data-toggle="modal" data-target="#exampleModal">Trở về
               </button>
-            </div>
-            <div class="m-2">
-              <button class="btn btn-danger" type="submit" [disabled]="customer.invalid">
+              </div>
+              <button class="btn btn-danger " type="submit" [disabled]="customer.invalid">
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                      class="bi bi-pencil-fill" viewBox="0 0 16 16">
                   <path
@@ -175,11 +174,9 @@
                 </svg>
                 Cập nhật
               </button>
-            </div>
+            </div >
           </div>
 
-
-          <br>
         </form>
       </div>
 
