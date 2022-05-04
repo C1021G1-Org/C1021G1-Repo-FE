@@ -1,1 +1,110 @@
-<p>payment-ticket works!</p>
+<div class="container-fluid h">
+  <div>
+    <h2 align="center">
+      Thanh toán vé
+    </h2>
+    <hr>
+  </div>
+
+  <div class="row">
+    <div class="col-2">
+      <table class="table">
+        <thead class="table-dark">
+        <tr>
+          <th>
+            Chức Năng
+          </th>
+        </tr>
+
+        </thead>
+        <tbody>
+        <tr>
+          <td class="fa fa-arrow-right">
+            <a href="">Thông tin cá nhân</a>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <a routerLink="/paymentTicket">Thanh toán</a>
+
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <a routerLink="/historyPayment">Lịch sử giao dịch</a>
+
+          </td>
+        </tr>
+        <tr>
+          <td class="fa fa-arrow-right">
+            <a href="">Đổi mật khẩu</a>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="col-10">
+      <table class="table table-striped table-bordered">
+        <thead class="table-dark">
+        <tr style="text-align: center">
+          <th>Mã vé</th>
+          <th>Nơi đi</th>
+          <th>Nơi đến</th>
+          <th>Ngày đặt</th>
+          <th>Ngày bay</th>
+          <th>Giá(VND)</th>
+          <th>Hủy vé</th>
+          <th>Chọn</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let item of ticketList|
+        paginate: { itemsPerPage: 5,
+         currentPage: p,
+         totalItems: totalPage}">
+
+          <td *ngIf="(item.statusTicket==0)">{{item.codeTicket}}</td>
+          <td *ngIf="(item.statusTicket==0)">{{item.seat.flightSeat.fromFlight}}</td>
+          <td *ngIf="(item.statusTicket==0)">{{item.seat.flightSeat.toFlight}}</td>
+          <td *ngIf="(item.statusTicket==0)" style="text-align: right">{{item.seat.flightSeat.dateStart| date : "dd-MM-yyyy"}}</td>
+          <td *ngIf="(item.statusTicket==0)" style="text-align: right">{{item.seat.flightSeat.dateEnd | date : "dd-MM-yyyy"}}</td>
+          <td *ngIf="(item.statusTicket==0)" style="text-align: right">{{item.priceTicket}}</td>
+          <td *ngIf="(item.statusTicket==0)" style="text-align: center">
+            <button class="btn btn-danger" (click)="abortTicket(item.codeTicket)">Hủy</button>
+          </td>
+          <td *ngIf="(item.statusTicket==0)" style="text-align: center" ><input type="checkbox" #element (change)="addTicketToPay(element,item.codeTicket)"></td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+
+  <div class="row d-flex justify-content-end">
+    <div class="col"></div>
+
+    <!--Phân trang-->
+    <div class="col">
+      <pagination-controls previousLabel="Trang trước"
+                           nextLabel="Trang sau"
+                           class="text-center my-pagination"
+                           (pageChange)="p = $event"></pagination-controls>
+    </div>
+    <div class="col">
+      <div class="row d-flex flex-row-reverse " style="width: 500px">
+        <button class="btn btn-success" (click)="callPaypal()" style="width: 150px">Thanh toán</button>
+      </div>
+      <div class="row d-flex flex-row-reverse " style="width: 500px">
+        <div id="paypal-button" style="width: 150px;height: 100px"></div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+

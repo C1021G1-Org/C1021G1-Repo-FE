@@ -18,6 +18,8 @@ import {DragDropModule} from "@angular/cdk/drag-drop";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {NgxPaginationModule} from "ngx-pagination";
 import {CdkTableModule} from "@angular/cdk/table";
+import {TicketModule} from "./ticket/ticket.module";
+import {MatDialogModule} from "@angular/material/dialog";
 
 @NgModule({
   declarations: [
@@ -32,6 +34,7 @@ import {CdkTableModule} from "@angular/cdk/table";
     BrowserModule,
     AppRoutingModule,
     FormsModule,
+    MatDialogModule,
     MatSnackBarModule,
     ReactiveFormsModule,
     HttpClientModule,
@@ -41,10 +44,13 @@ import {CdkTableModule} from "@angular/cdk/table";
     DragDropModule,
     BrowserAnimationsModule,
     NgxPaginationModule,
-    CdkTableModule
+    CdkTableModule,
+    TicketModule,
+
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule {
 }
+//
