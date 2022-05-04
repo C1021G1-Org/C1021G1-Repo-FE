@@ -10,6 +10,8 @@ import {EmployeeService} from "../employee.service";
 })
 export class DeleteEmployeeComponent implements OnInit {
 
+  employee: any = this.data.employee;
+
   constructor(private dialogRef: MatDialogRef<DeleteEmployeeComponent>,
               @Inject(MAT_DIALOG_DATA) public data: any,
               public snackBar: MatSnackBar,
@@ -25,7 +27,7 @@ export class DeleteEmployeeComponent implements OnInit {
   }
 
   deleteEmployee() {
-    this.employeeService.deleteEmployee(this.data.delete.employee.id).subscribe(()=>{
+    this.employeeService.deleteEmployee(this.data.employee.id).subscribe(()=>{
       this.snackBar.open("Xoá thành công!",'',{
         duration: 2000
       })

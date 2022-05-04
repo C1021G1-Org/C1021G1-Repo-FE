@@ -18,6 +18,7 @@ import {DragDropModule} from "@angular/cdk/drag-drop";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {NgxPaginationModule} from "ngx-pagination";
 import {CdkTableModule} from "@angular/cdk/table";
+import {MatDialogModule} from '@angular/material/dialog';
 
 @NgModule({
   declarations: [
@@ -41,7 +42,8 @@ import {CdkTableModule} from "@angular/cdk/table";
     MatInputModule,
     DragDropModule,
     NgxPaginationModule,
-    CdkTableModule
+    CdkTableModule,
+    MatDialogModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

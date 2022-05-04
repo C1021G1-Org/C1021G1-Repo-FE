@@ -13,10 +13,10 @@
         <div class="input-group-prepend">
           <label class="mr-sm-2" style="color: white">Tìm kiếm theo:</label>
         </div>
-        <input class="form-control mr-sm-2" type="search" placeholder="Mã nhân viên" aria-label="Search">
-        <input class="form-control mr-sm-2" type="search" placeholder="Tên" aria-label="Search">
-        <input class="form-control mr-sm-2" type="search" placeholder="Tài khoản" aria-label="Search">
-        <button class="btn btn-info my-2 my-sm-8" type="submit">
+        <input class="form-control mr-sm-2" type="search" placeholder="Tên" #name>
+        <input class="form-control mr-sm-2" type="search" placeholder="Mã nhân viên" #code>
+        <input class="form-control mr-sm-2" type="search" placeholder="Tài khoản" #email>
+        <button class="btn btn-info my-2 my-sm-8" type="submit" (click)="search(name.value,code.value,email.value)">
           <i class="fa fa-search" aria-hidden="true"></i>
         </button>
       </div>
@@ -105,26 +105,26 @@
               <nav aria-label="Page navigation example">
                 <ul class="pagination">
                   <li class="page-item">
-                    <a class="page-link" style="color: black" href="#" aria-label="Previous">
-                      <span aria-hidden="true">&laquo;</span>
+                    <a class="page-link" style="color: black" (click)="firstPage(name.value,code.value,email.value)">
+                      <span>&laquo;</span>
                     </a>
                   </li>
                   <li class="page-item">
-                    <a class="page-link" style="color: black" href="#" aria-label="Previous">
-                      <span aria-hidden="true">&lt;</span>
+                    <a class="page-link" style="color: black" (click)="previousPage(name.value,code.value,email.value)">
+                      <span>&lt;</span>
                     </a>
                   </li>
-                  <li class="page-item"><a class="page-link" style="color: black" href="#">1</a></li>
-                  <li class="page-item"><a class="page-link" style="color: black" href="#">/</a></li>
-                  <li class="page-item"><a class="page-link" style="color: black" href="#">5</a></li>
+                  <li class="page-item"><a class="page-link" style="color: black">{{indexEmployee + 1}}</a></li>
+                  <li class="page-item"><a class="page-link" style="color: black">/</a></li>
+                  <li class="page-item"><a class="page-link" style="color: black">{{totalEmployee + 1}}</a></li>
                   <li class="page-item">
-                    <a class="page-link" style="color: black" href="#" aria-label="Previous">
-                      <span aria-hidden="true">&gt;</span>
+                    <a class="page-link" style="color: black" (click)="nextPage(name.value,code.value,email.value)">
+                      <span>&gt;</span>
                     </a>
                   </li>
                   <li class="page-item">
-                    <a class="page-link" style="color: black" href="#" aria-label="Next">
-                      <span aria-hidden="true">&raquo;</span>
+                    <a class="page-link" style="color: black" (click)="lastPage(name.value,code.value,email.value)">
+                      <span>&raquo;</span>
                     </a>
                   </li>
                 </ul>
