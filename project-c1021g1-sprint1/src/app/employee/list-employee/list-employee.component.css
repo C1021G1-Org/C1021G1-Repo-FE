@@ -3,6 +3,10 @@ body {
   z-index: -1;
 }
 
+a {
+  cursor: pointer;
+}
+
 h1 {
   margin-top: 45px;
   text-align: center;
@@ -85,4 +89,8 @@ p {
 p:hover {
   overflow: visible;
   overflow-block: auto;
+}
+
+.disableBtn {
+  cursor: not-allowed;
 }

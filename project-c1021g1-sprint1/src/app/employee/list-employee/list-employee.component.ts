@@ -27,19 +27,11 @@ export class ListEmployeeComponent implements OnInit {
   ngOnInit(): void {
     this.employeeService.getAllEmployee(0).subscribe(data => {
       this.employees = data['content'];
+      this.totalEmployee = data['totalPages'] - 1;
     });
 
     this.employeeService.getAllEmployeeNotPagination().subscribe(data => {
       this.listEmployeeNotPagination = data['content'];
-
-      if ((this.listEmployeeNotPagination.length % 10) != 0) {
-        if ((this.listEmployeeNotPagination.length % 10) >= 5)
-          this.totalEmployee = Math.round(this.listEmployeeNotPagination.length / 10) - 1;
-        else
-          this.totalEmployee = Math.round(this.listEmployeeNotPagination.length / 10)
-      }
-      else
-        this.totalEmployee = this.listEmployeeNotPagination.length / 10;
     })
   }
 
@@ -94,14 +86,10 @@ export class ListEmployeeComponent implements OnInit {
     this.employeeService.search(name,code,email,page).subscribe(data => {
       this.employees = data['content'];
       this.indexEmployee = 0;
-      if ((this.employees.length % 10) != 0) {
-        if ((this.employees.length % 10) >= 5)
-          this.totalEmployee = Math.round(this.employees.length / 10) - 1;
-        else
-          this.totalEmployee = Math.round(this.employees.length / 10)
-      }
-      else
-        this.totalEmployee = this.employees.length / 10;
+      this.totalEmployee = data['totalPages'] - 1;
+      this.snackBar.open("Tìm kiếm thành công!",'', {
+        duration: 2000
+      })
     })
   }
 }

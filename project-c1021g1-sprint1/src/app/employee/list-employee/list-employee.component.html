@@ -70,12 +70,12 @@
         </tr>
         </thead>
         <tbody>
-        <tr *ngFor="let employee of employees">
-          <th class="table-text-end">{{employee.id}}</th>
+        <tr *ngFor="let employee of employees, index as i">
+          <th class="table-text-end">{{i + 1}}</th>
           <td>{{employee.codeEmployee}}</td>
           <td>{{employee.nameEmployee}}</td>
-          <td class="table-text-end">{{employee.birthdayEmployee}}</td>
-          <td>{{employee.genderEmployee}}</td>
+          <td class="table-text-end">{{employee.birthdayEmployee | date: 'dd/MM/yyyy'}}</td>
+          <td>{{employee.genderEmployee ? 'Nam' : 'Nữ'}}</td>
           <td>{{employee.emailEmployee}}</td>
           <td class="table-text-end">{{employee.phoneEmployee}}</td>
           <td>
@@ -92,7 +92,7 @@
                       aria-expanded="false">
               </button>
               <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                <a class="dropdown-item" >Sửa</a>
+                <a class="dropdown-item">Sửa</a>
                 <a class="dropdown-item" (click)="dialogDeleteCustomer(employee.id)">Xóa</a>
               </div>
             </div>
@@ -101,35 +101,40 @@
         </tbody>
       </table>
 
-            <div class="row d-flex justify-content-center">
-              <nav aria-label="Page navigation example">
-                <ul class="pagination">
-                  <li class="page-item">
-                    <a class="page-link" style="color: black" (click)="firstPage(name.value,code.value,email.value)">
-                      <span>&laquo;</span>
-                    </a>
-                  </li>
-                  <li class="page-item">
-                    <a class="page-link" style="color: black" (click)="previousPage(name.value,code.value,email.value)">
-                      <span>&lt;</span>
-                    </a>
-                  </li>
-                  <li class="page-item"><a class="page-link" style="color: black">{{indexEmployee + 1}}</a></li>
-                  <li class="page-item"><a class="page-link" style="color: black">/</a></li>
-                  <li class="page-item"><a class="page-link" style="color: black">{{totalEmployee + 1}}</a></li>
-                  <li class="page-item">
-                    <a class="page-link" style="color: black" (click)="nextPage(name.value,code.value,email.value)">
-                      <span>&gt;</span>
-                    </a>
-                  </li>
-                  <li class="page-item">
-                    <a class="page-link" style="color: black" (click)="lastPage(name.value,code.value,email.value)">
-                      <span>&raquo;</span>
-                    </a>
-                  </li>
-                </ul>
-              </nav>
-            </div>
+      <div class="row d-flex justify-content-center">
+        <nav aria-label="Page navigation example">
+          <ul class="pagination">
+            <li class="page-item">
+              <a class="page-link" style="color: black"
+                 (click)="firstPage(name.value,code.value,email.value)"
+                 [class.disableBtn]="indexEmployee <= 0">
+                <span>&laquo;</span>
+              </a>
+            </li>
+            <li class="page-item">
+              <a class="page-link" style="color: black" (click)="previousPage(name.value,code.value,email.value)"
+                 [class.disableBtn]="indexEmployee <= 0">
+                <span>&lt;</span>
+              </a>
+            </li>
+            <li class="page-item"><a class="page-link" style="color: black; cursor: not-allowed">{{indexEmployee + 1}}</a></li>
+            <li class="page-item"><a class="page-link" style="color: black; cursor: not-allowed">/</a></li>
+            <li class="page-item"><a class="page-link" style="color: black; cursor: not-allowed">{{totalEmployee + 1}}</a></li>
+            <li class="page-item">
+              <a class="page-link" style="color: black" (click)="nextPage(name.value,code.value,email.value)"
+                 [class.disableBtn]="indexEmployee >= totalEmployee">
+                <span>&gt;</span>
+              </a>
+            </li>
+            <li class="page-item">
+              <a class="page-link" style="color: black" (click)="lastPage(name.value,code.value,email.value)"
+                 [class.disableBtn]="indexEmployee >= totalEmployee">
+                <span>&raquo;</span>
+              </a>
+            </li>
+          </ul>
+        </nav>
+      </div>
     </div>
   </div>
 </div>
