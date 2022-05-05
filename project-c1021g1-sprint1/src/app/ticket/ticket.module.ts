@@ -10,13 +10,19 @@ import { PrintTicketComponent } from './print-ticket/print-ticket.component';
 import { DeleteTicketComponent } from './delete-ticket/delete-ticket.component';
 import { CreateTicketComponent } from './create-ticket/create-ticket.component';
 import { DetailTicketComponent } from './detail-ticket/detail-ticket.component';
+import {NgxPaginationModule} from "ngx-pagination";
+import {FormsModule} from "@angular/forms";
+import {MatDialogModule} from "@angular/material/dialog";
 
 
 @NgModule({
   declarations: [ListTicketComponent, EditTicketComponent, PaymentTicketComponent, ListHistoryTicketComponent, PrintTicketComponent, DeleteTicketComponent, CreateTicketComponent, DetailTicketComponent],
-  imports: [
-    CommonModule,
-    TicketRoutingModule
-  ]
+    imports: [
+        CommonModule,
+        TicketRoutingModule,
+        NgxPaginationModule,
+        FormsModule,
+        MatDialogModule
+    ]
 })
 export class TicketModule { }
