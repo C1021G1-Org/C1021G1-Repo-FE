@@ -6,12 +6,14 @@ import { DeleteEmployeeComponent } from './delete-employee/delete-employee.compo
 import { ListEmployeeComponent } from './list-employee/list-employee.component';
 import { CreateEmployeeComponent } from './create-employee/create-employee.component';
 import { EditEmployeeComponent } from './edit-employee/edit-employee.component';
+import {BrowserModule} from "@angular/platform-browser";
 
 
 @NgModule({
   declarations: [DeleteEmployeeComponent, ListEmployeeComponent, CreateEmployeeComponent, EditEmployeeComponent],
   imports: [
     CommonModule,
+    BrowserModule,
     EmployeeRoutingModule
   ]
 })
