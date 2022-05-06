@@ -1,1 +1,90 @@
-<p>edit-employee works!</p>
+<div class="col-md-8 order-md-1">
+  <h4 class="mb-3 mt-5" style="text-align: center;">Thêm Mới Nhân Viên</h4>
+  <form class="needs-validation was-validated" novalidate="" [formGroup]="createEmployeeForm" >
+    <div class="mb-3">
+      <label >Mã Nhân Viên <span class="text-danger">(*)</span>:</label>
+      <div class="input-group">
+        <input type="text" class="form-control"  placeholder="Mã Nhân Viên" required="" formControlName = "code_Employee" >
+        <div class="invalid-feedback" style="width: 100%;">
+          Vui Lòng điền Mã Nhân Viên.
+        </div>
+      </div>
+    </div>
+
+    <div class="mb-3">
+      <label >Họ Và Tên <span class="text-danger">(*)</span>:</label>
+      <div class="input-group">
+        <input type="text" class="form-control"  placeholder="Nguyễn Văn A " required="" formControlName = "name_Employee" >
+        <div class="invalid-feedback" style="width: 100%;">
+          Vui Nhập Họ Và Tên.
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-3 mb-3">
+        <label >Ngày sinh <span class="text-danger">(*)</span>:</label>
+        <input type="date" class="form-control" id="lastName" placeholder="dd-mm-yyyy" required="" formControlName = "birthday_Employee" >
+        <div class="invalid-feedback">
+          Vui lòng điền ngày tháng năm sinh.
+        </div>
+      </div>
+    </div>
+
+    <div class="d-block my-3 d-flex " >
+      <label >Giới tính <span class="text-danger">(*)</span>: </label>
+      <div class="custom-control custom-radio  mx-2 " >
+        <input   type="radio" class="custom-control-input mx-2" checked="" required=""  value="true"  formControlName="gender_Employee" >
+        <label class="custom-control-label mx-2"  >Nam 🙎‍♂</label>
+      </div>
+      <div class="custom-control custom-radio  mx-2">
+        <input  type="radio" class="custom-control-input mx-2" required=""  value="false"  formControlName="gender_Employee">
+        <label class="custom-control-label mx-2" >Nữ 🙎🏻‍♀</label>
+      </div>
+      <div class="custom-control custom-radio  mx-2">
+        <input   type="radio" class="custom-control-input mx-2" required="" value="false" formControlName="gender_Employee" >
+        <label class="custom-control-label mx-2" >Khác ⚧</label>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-6 mb-3">
+        <label >Tài Khoản <span class="text-danger">(*)</span>: </label>
+        <input type="text" class="form-control" required="" formControlName="email_Employee" >
+        <div class="invalid-feedback">
+          Vui lòng nhập tên tài khoản.
+        </div>
+      </div>
+      <div class="col-md-6 mb-3">
+        <label for="last">Địa chỉ<span class="text-danger">(*)</span>:</label>
+        <input type="text" class="form-control" id="last" placeholder="" value="" required="" formControlName="address_Employee" name="address_Employee">
+        <div class="invalid-feedback">
+          Vui lòng nhập mật địa chỉ.
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-6 mb-3">
+        <label >Số điện thoại <span class="text-danger">(*)</span>: </label>
+        <input type="text" class="form-control"  placeholder="" value="" required="" formControlName="phone_Employee" >
+        <div class="invalid-feedback">
+          Vui lòng nhập số điện thoại.
+        </div>
+      </div>
+    </div>
+    <div class="mb-3">
+      <label> Phân Quyền  <span class="text-danger">(*)</span>:</label>
+      <select  style="border-radius: 5px;" formControlName="id_employee_type" >
+        <option value="">Chọn</option>
+        <option *ngFor="let item of listEmployeeType" [ngValue]="item" >{{item.nameEmployeeType}}</option>
+      </select>
+    </div>
+    <div class="row" style="margin-bottom: 20px;">
+      <div class="col-4"></div>
+      <button class="btn btn-danger btn-lg btn-block col-2 m-2">Quay Lại</button>
+      <button class="btn btn-primary btn-lg btn-block col-2 m-2" type="submit" (click)="createEmployee()" >Lưu</button>
+      <div class="col-4"></div>
+    </div>
+  </form>
+</div>
