@@ -88,12 +88,12 @@
           </td>
           <td class="text-center " colspan="2">
             <div class="dropdown">
-              <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown"
-                      aria-expanded="false">
+              <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">
               </button>
-              <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                <a class="dropdown-item">Sửa</a>
-                <a class="dropdown-item" (click)="dialogDeleteCustomer(employee.id)">Xóa</a>
+              <div class="dropdown-menu dropdown-menu-right">
+                <a class="dropdown-item text-center">Sửa</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item text-center" (click)="dialogDeleteCustomer(employee.id)">Xóa</a>
               </div>
             </div>
           </td>
@@ -101,39 +101,41 @@
         </tbody>
       </table>
 
-      <div class="row d-flex justify-content-center">
-        <nav aria-label="Page navigation example">
-          <ul class="pagination">
-            <li class="page-item">
-              <a class="page-link" style="color: black"
-                 (click)="firstPage(name.value,code.value,email.value)"
-                 [class.disableBtn]="indexEmployee <= 0">
-                <span>&laquo;</span>
-              </a>
-            </li>
-            <li class="page-item">
-              <a class="page-link" style="color: black" (click)="previousPage(name.value,code.value,email.value)"
-                 [class.disableBtn]="indexEmployee <= 0">
-                <span>&lt;</span>
-              </a>
-            </li>
-            <li class="page-item"><a class="page-link" style="color: black; cursor: not-allowed">{{indexEmployee + 1}}</a></li>
-            <li class="page-item"><a class="page-link" style="color: black; cursor: not-allowed">/</a></li>
-            <li class="page-item"><a class="page-link" style="color: black; cursor: not-allowed">{{totalEmployee + 1}}</a></li>
-            <li class="page-item">
-              <a class="page-link" style="color: black" (click)="nextPage(name.value,code.value,email.value)"
-                 [class.disableBtn]="indexEmployee >= totalEmployee">
-                <span>&gt;</span>
-              </a>
-            </li>
-            <li class="page-item">
-              <a class="page-link" style="color: black" (click)="lastPage(name.value,code.value,email.value)"
-                 [class.disableBtn]="indexEmployee >= totalEmployee">
-                <span>&raquo;</span>
-              </a>
-            </li>
-          </ul>
-        </nav>
+      <div [class.display]="checkNull">
+        <div class="row d-flex justify-content-center">
+          <nav aria-label="Page navigation example">
+            <ul class="pagination">
+              <li class="page-item">
+                <a class="page-link" style="color: black"
+                   (click)="firstPage(name.value,code.value,email.value)"
+                   [class.disableBtn]="indexEmployee <= 0">
+                  <span>&laquo;</span>
+                </a>
+              </li>
+              <li class="page-item">
+                <a class="page-link" style="color: black" (click)="previousPage(name.value,code.value,email.value)"
+                   [class.disableBtn]="indexEmployee <= 0">
+                  <span>&lt;</span>
+                </a>
+              </li>
+              <li class="page-item"><a class="page-link" style="color: black; cursor: no-drop">{{indexEmployee + 1}}</a></li>
+              <li class="page-item"><a class="page-link" style="color: black; cursor: no-drop">/</a></li>
+              <li class="page-item"><a class="page-link" style="color: black; cursor: no-drop">{{totalEmployee + 1}}</a></li>
+              <li class="page-item">
+                <a class="page-link" style="color: black" (click)="nextPage(name.value,code.value,email.value)"
+                   [class.disableBtn]="indexEmployee >= totalEmployee">
+                  <span>&gt;</span>
+                </a>
+              </li>
+              <li class="page-item">
+                <a class="page-link" style="color: black" (click)="lastPage(name.value,code.value,email.value)"
+                   [class.disableBtn]="indexEmployee >= totalEmployee">
+                  <span>&raquo;</span>
+                </a>
+              </li>
+            </ul>
+          </nav>
+        </div>
       </div>
     </div>
   </div>

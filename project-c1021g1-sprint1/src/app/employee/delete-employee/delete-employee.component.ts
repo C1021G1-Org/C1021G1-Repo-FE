@@ -28,7 +28,12 @@ export class DeleteEmployeeComponent implements OnInit {
 
   deleteEmployee() {
     this.employeeService.deleteEmployee(this.data.employee.id).subscribe(()=>{
-      this.snackBar.open("Xoá thành công!",'',{
+      this.snackBar.open("Xoá thành công!",'ok',{
+        duration: 2000
+      })
+      this.dialogRef.close();
+    }, error => {
+      this.snackBar.open("Xoá thất bại!",'error',{
         duration: 2000
       })
       this.dialogRef.close();

@@ -6,7 +6,7 @@ import {HttpClient} from "@angular/common/http";
 })
 export class EmployeeService {
 
-  private readonly employeeURL = 'http://localhost:8080/employee'
+  private readonly employeeURL = 'http://localhost:8080/api/employee'
 
   constructor(private httpClient: HttpClient) { }
 
