@@ -55,7 +55,7 @@
 
     <div class="col-10">
       <table class="table table-striped table-bordered">
-        <thead class="table-dark">
+        <thead class="table-dark" [class.display]="checkNull">
         <tr>
           <th class="text-center extra-small">STT</th>
           <th class="text-center small">Mã Nhân Viên</th>
@@ -97,6 +97,9 @@
               </div>
             </div>
           </td>
+        </tr>
+        <tr [class.display]="!checkNull">
+          <td class="text-center" colspan="10">Không tìm thấy!</td>
         </tr>
         </tbody>
       </table>
