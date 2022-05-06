@@ -12,6 +12,8 @@ import { CreateTicketComponent } from './create-ticket/create-ticket.component';
 import { DetailTicketComponent } from './detail-ticket/detail-ticket.component';
 import {NgxPaginationModule} from "ngx-pagination";
 import { AbortTicketComponent } from './abort-ticket/abort-ticket.component';
+import {ReactiveFormsModule} from "@angular/forms";
+import {MatSortModule} from "@angular/material/sort";
 
 
 @NgModule({
@@ -19,10 +21,12 @@ import { AbortTicketComponent } from './abort-ticket/abort-ticket.component';
     exports: [
         ListHistoryTicketComponent
     ],
-  imports: [
-    CommonModule,
-    TicketRoutingModule,
-    NgxPaginationModule
-  ]
+    imports: [
+        CommonModule,
+        TicketRoutingModule,
+        NgxPaginationModule,
+        ReactiveFormsModule,
+        MatSortModule
+    ]
 })
 export class TicketModule { }

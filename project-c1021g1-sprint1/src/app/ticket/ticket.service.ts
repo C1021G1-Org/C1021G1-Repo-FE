@@ -12,14 +12,19 @@ export class TicketService {
   constructor(private http: HttpClient) {
   }
 
-  getAllTicketByCustomerId(id: number): Observable<any> {
-    return this.http.get<any>(API_TICKET + "list/" + id);
+  getAllTicketByCustomerId(id: number,index:number): Observable<any> {
+    return this.http.get<any>(API_TICKET + "list/" + id+ '?page=' + index);
   }
 
-  getHistoryTicketByCustomerId(id: number): Observable<any> {
-    return this.http.get<any>(API_TICKET + "listHistory/" + id);
+  getHistoryTicketByCustomerId(id: number,index:number): Observable<any> {
+    return this.http.get<any>(API_TICKET + "listHistory/" + id+ '?page=' + index);
   }
 
+
+  searchListHistoryTicketList(id: number,flightFrom:string,flightTo:string,dateStart:string,index:number): Observable<any> {
+    // @ts-ignore
+    return this.http.get<any>(API_TICKET + "searchHistory" +id+ "?flightFrom=" + flightFrom + "&flightTo=" + flightTo + "&dateStart="+ '?page=' + index);
+  }
   payTicket(code: any): Observable<any> {
     // @ts-ignore
     return this.http.patch<any>(API_TICKET + "pay/" + code);
@@ -48,4 +53,6 @@ export class TicketService {
     // @ts-ignore
     return this.http.put<any>(API_TICKET + "sendmail" + "?finalPrice=" + finalPrice + "&nameCustomer=" + nameCustomer + "&quantity=" + quantity);
   }
+
+
 }

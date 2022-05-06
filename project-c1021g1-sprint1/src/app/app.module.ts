@@ -20,6 +20,7 @@ import {NgxPaginationModule} from "ngx-pagination";
 import {CdkTableModule} from "@angular/cdk/table";
 import {TicketModule} from "./ticket/ticket.module";
 import {MatDialogModule} from "@angular/material/dialog";
+import {MatSortModule} from "@angular/material/sort";
 
 @NgModule({
   declarations: [
@@ -46,11 +47,12 @@ import {MatDialogModule} from "@angular/material/dialog";
     NgxPaginationModule,
     CdkTableModule,
     TicketModule,
-
+    MatSortModule
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule {
 }
+
 //

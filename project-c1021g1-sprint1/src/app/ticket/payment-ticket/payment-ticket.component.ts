@@ -16,12 +16,11 @@ declare var paypal: any;
 export class PaymentTicketComponent implements OnInit {
   ticketList: Ticket[];
 
+  indexPagination: number = 0;
+  totalPagination: number;
+
   // SonNH Trạng thái button paypal
   isPaypalLoad: Boolean = false;
-
-  // SonNH trang mặc định
-  p = 1;
-  totalPage: number;
 
   // SonNH list mã ticket cần thanh toán
   listTicketToPay: any[] = [];
@@ -37,7 +36,6 @@ export class PaymentTicketComponent implements OnInit {
 
   priceForEachTicket: number;
 
-
   constructor(private ticketService: TicketService,
               private dialog: MatDialog,
               private snackBar: MatSnackBar) {
@@ -49,14 +47,14 @@ export class PaymentTicketComponent implements OnInit {
   }
 
   getALlTicketByCustomerId() {
-    this.ticketService.getAllTicketByCustomerId(1).subscribe(value => {
-      this.ticketList = value;
-      this.totalPage = value.length;
-      console.log(this.totalPage)
-    }, error => {
-      console.log(error)
-    }, () => {
-      console.log("lấy list ticket thành công")
+    this.ticketService.getAllTicketByCustomerId(1,0).subscribe(value => {
+      this.ticketList = value.content;
+      this.totalPagination = value['totalPages'];
+      if ((this.ticketList.length/5)!=0){
+        this.totalPagination = (Math.round((this.ticketList.length/5)+1))
+      }
+      console.log(this.totalPagination)
+
     })
   }
 
@@ -80,9 +78,8 @@ export class PaymentTicketComponent implements OnInit {
   private totalpr: any;
   private pric: any;
 
-  // private totalPrice: number;
+
   callPaypal() {
-    // this.pay();
     this.getTotalPrice();
     if (this.isPaypalLoad == false) {
       this.isPaypalLoad = true;
@@ -99,7 +96,7 @@ export class PaymentTicketComponent implements OnInit {
         style: {
           size: 'small',
           color: 'gold',
-          shape: 'pill',
+          shape: 'rect',
         },
         commit: true,
         // SonNH Set up a payment
@@ -117,11 +114,12 @@ export class PaymentTicketComponent implements OnInit {
         onAuthorize: function (data, actions) {
           return actions.payment.execute().then(function () {
             // Show a confirmation message to the buyer
-            // t.sendMail(finalPay);
-            t.ngOnInit();
+            t.pay();
+            t.getALlTicketByCustomerId();
             t.snackBar.open("Thanh toán thành công!", "Xác nhận", {
               duration: 3000
             });
+
             t.sendEmailConfirmPayment();
           });
         }
@@ -167,7 +165,6 @@ export class PaymentTicketComponent implements OnInit {
 
 
   pay() {
-    // this.getListToPay();
     // SonNH gửi list mã vé cần thanh toán qua back end!
     for (let i = 0; i < this.listTicketToPay.length; i++) {
       this.codeTicketTopay = this.listTicketToPay[i]
@@ -196,10 +193,51 @@ export class PaymentTicketComponent implements OnInit {
   }
 
   sendEmailConfirmPayment() {
+    const priceVND = Math.round(this.finalPrice*23000)
     const quantity = this.listTicketToPay.length;
     const nameCustomer = this.ticketList[0].customer.nameCustomer;
-    this.ticketService.confirmEmailPayment(this.finalPrice, nameCustomer, quantity).subscribe(value => {
+    this.ticketService.confirmEmailPayment(priceVND, nameCustomer, quantity).subscribe(value => {
       console.log("Gửi email")
     })
+  }
+
+//  SonNH phaan trang
+  getTicketPage(pageNumber: number) {
+    this.ticketService.getAllTicketByCustomerId(1,pageNumber).subscribe((data: any) => {
+      console.log(this.ticketList)
+      this.ticketList = data.content;
+    });
+  }
+
+  firtPage() {
+    this.indexPagination = 0;
+    this.ngOnInit();
+  }
+
+  nextPage() {
+    if (this.indexPagination < this.totalPagination - 1) {
+      this.indexPagination++;
+      console.log(this.indexPagination)
+      this.getTicketPage(this.indexPagination);
+    } else {
+      console.log('het trang nextPage')
+    }
+
+  }
+
+  previousPage() {
+    if (this.indexPagination > 0) {
+      this.indexPagination--;
+      console.log(this.indexPagination)
+      this.getTicketPage(this.indexPagination);
+    } else {
+      console.log('het trang  previous')
+    }
+  }
+
+  lastPage() {
+    this.indexPagination = this.totalPagination - 1;
+    console.log(this.totalPagination)
+    this.getTicketPage(this.indexPagination);
   }
 }
