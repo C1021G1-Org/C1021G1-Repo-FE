@@ -8,7 +8,7 @@ import {EmployeeType} from "./model/employeeType";
 })
 export class EmployeeService {
 
-  private readonly employeeURL = 'http://localhost:8080/employee'
+  private readonly employeeURL = 'http://localhost:8080/api/employee'
 
 
 

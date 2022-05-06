@@ -14,10 +14,9 @@ export class ListEmployeeComponent implements OnInit {
 
   employees: Employee[] = [];
   employee: Employee;
-  p: number = 1;
   totalEmployee: number;
   indexEmployee: number = 0;
-  listEmployeeNotPagination: Employee[] = [];
+  checkNull: boolean = false;
 
   constructor(private employeeService: EmployeeService,
               public dialog: MatDialog,
@@ -27,20 +26,8 @@ export class ListEmployeeComponent implements OnInit {
   ngOnInit(): void {
     this.employeeService.getAllEmployee(0).subscribe(data => {
       this.employees = data['content'];
+      this.totalEmployee = data['totalPages'] - 1;
     });
-
-    this.employeeService.getAllEmployeeNotPagination().subscribe(data => {
-      this.listEmployeeNotPagination = data['content'];
-
-      if ((this.listEmployeeNotPagination.length % 10) != 0) {
-        if ((this.listEmployeeNotPagination.length % 10) >= 5)
-          this.totalEmployee = Math.round(this.listEmployeeNotPagination.length / 10) - 1;
-        else
-          this.totalEmployee = Math.round(this.listEmployeeNotPagination.length / 10)
-      }
-      else
-        this.totalEmployee = this.listEmployeeNotPagination.length / 10;
-    })
   }
 
   dialogDeleteCustomer(id: number) {
@@ -58,7 +45,9 @@ export class ListEmployeeComponent implements OnInit {
 
   firstPage(name: string, code: string, email: string) {
     this.indexEmployee = 0;
-    this.search(name, code, email);
+    this.employeeService.search(name,code,email,this.indexEmployee).subscribe(data => {
+      this.employees = data['content'];
+    })
   }
 
   previousPage(name: string, code: string, email: string) {
@@ -94,14 +83,17 @@ export class ListEmployeeComponent implements OnInit {
     this.employeeService.search(name,code,email,page).subscribe(data => {
       this.employees = data['content'];
       this.indexEmployee = 0;
-      if ((this.employees.length % 10) != 0) {
-        if ((this.employees.length % 10) >= 5)
-          this.totalEmployee = Math.round(this.employees.length / 10) - 1;
-        else
-          this.totalEmployee = Math.round(this.employees.length / 10)
-      }
-      else
-        this.totalEmployee = this.employees.length / 10;
+      this.totalEmployee = data['totalPages'] - 1;
+      this.checkNull = false;
+      this.snackBar.open("Tìm kiếm thành công!",'ok', {
+        duration: 2000
+      })
+    },error => {
+      this.employees = [];
+      this.checkNull = true;
+      this.snackBar.open("Tìm kiếm thất bại!",'error', {
+        duration: 2000
+      })
     })
   }
 }
