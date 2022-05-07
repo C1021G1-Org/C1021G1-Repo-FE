@@ -18,6 +18,10 @@ import {DragDropModule} from "@angular/cdk/drag-drop";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {NgxPaginationModule} from "ngx-pagination";
 import {CdkTableModule} from "@angular/cdk/table";
+import { TestComponent } from './login/test/test.component';
+import {MatButtonModule} from "@angular/material/button";
+import {MatDialogModule} from "@angular/material/dialog";
+import { ForgetedPasswordComponent } from './login/forgeted-password/forgeted-password.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +30,9 @@ import {CdkTableModule} from "@angular/cdk/table";
     FooterComponent,
     BodyComponent,
     SignUpComponent,
-    SignInComponent
+    SignInComponent,
+    TestComponent,
+    ForgetedPasswordComponent
   ],
   imports: [
     BrowserModule,
@@ -41,7 +47,9 @@ import {CdkTableModule} from "@angular/cdk/table";
     DragDropModule,
     BrowserAnimationsModule,
     NgxPaginationModule,
-    CdkTableModule
+    CdkTableModule,
+    MatButtonModule,
+    MatDialogModule
   ],
   providers: [],
   bootstrap: [AppComponent]
