@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
-import {HttpClient} from "@angular/common/http";
+import {HttpClient, HttpHeaders} from "@angular/common/http";
+import {Observable} from "rxjs";
 import {Airline} from "./model/airline";
 import {Flight} from "./model/flight";
 import {FlightDto} from "./dto/flight-dto";
@@ -9,31 +10,62 @@ import {FlightDto} from "./dto/flight-dto";
 })
 export class FlightService {
 
-  // TrongHD đường dẫn api
-  private readonly FLIGHT_API='http://localhost:8080/api/flight/';
+  constructor(
+    private http: HttpClient
+  ) { }
+  private baseURL = 'http://localhost:8080/api/flight';
 
+  httpOptions = {
+    headers: new HttpHeaders({
+      'Content-Type': 'application/json'
+    })
+  };
+  // Hieu
+  getListAllFlight(index: number) {
+    return this.http.get(this.baseURL + "/list?page=" + index);
+  }
+// Hieu
+  getListAllFlightNotPagination() {
+    return this.http.get(this.baseURL + "/list-not-pagination");
+  }
+// Hieu
+  getListAllAirlineType() {
+    return this.http.get(this.baseURL + "/listAirlineType");
+  }
+// Hieu
+  search(fromFlight: string, toFlight: string, dateStart: string, dateEnd: string, index: any)  {
+    return this.http.get(this.baseURL + '/search?fromFlight=' + fromFlight + '&toFlight='
+                          + toFlight + '&dateStart=' + dateStart + '&dateEnd=' + dateEnd + '&page=' + index)
+  }
+// Hieu
+  getFlightById(id: number){
+    return this.http.get(this.baseURL + '/find-id/' + id);
+  }
+// Hieu
+  deleteFlight(id) {
+    return this.http.delete(this.baseURL + '/delete/' + id);
+  }
 
-  constructor(private http : HttpClient) { }
 
   //TrongHD lấy list airline
   getAirlineType() {
-    return this.http.get<Airline[]>(this.FLIGHT_API + 'listAirlineType')
+    return this.http.get<Airline[]>(this.baseURL + 'listAirlineType')
   }
 
   //TrongHD lấy thông tin theo id
   getInfo(id : number) {
-    return this.http.get<Flight>(this.FLIGHT_API + id)
+    return this.http.get<Flight>(this.baseURL + id)
   }
 
   //TrongHD thêm mới chuyến bay
   createFlight(flight) {
     const header = {'content-type': 'application/json'};
     const body = JSON.stringify(flight);
-    return this.http.post<FlightDto>(this.FLIGHT_API + 'create', body, {headers: header});
+    return this.http.post<FlightDto>(this.baseURL + 'create', body, {headers: header});
   }
 
   //TrongHD sửa chuyến bay
   updateFlight(id: number, data) {
-    return this.http.patch<FlightDto>(this.FLIGHT_API + 'update/' + id, data);
+    return this.http.patch<FlightDto>(this.baseURL + 'update/' + id, data);
   }
 }
