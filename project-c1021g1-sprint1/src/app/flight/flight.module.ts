@@ -7,13 +7,21 @@ import { EditFlightComponent } from './edit-flight/edit-flight.component';
 import { DeleteFlightComponent } from './delete-flight/delete-flight.component';
 import { ListFlightComponent } from './list-flight/list-flight.component';
 import { ListSearchFlightComponent } from './list-search-flight/list-search-flight.component';
+import {ReactiveFormsModule} from "@angular/forms";
+import {MatFormFieldModule} from "@angular/material/form-field";
 
 
 @NgModule({
   declarations: [CreateFlightComponent, EditFlightComponent, DeleteFlightComponent, ListFlightComponent, ListSearchFlightComponent],
+  exports: [
+    EditFlightComponent,
+    CreateFlightComponent
+  ],
   imports: [
     CommonModule,
-    FlightRoutingModule
+    FlightRoutingModule,
+    ReactiveFormsModule,
+    MatFormFieldModule
   ]
 })
 export class FlightModule { }
