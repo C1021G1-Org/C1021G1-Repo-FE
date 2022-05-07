@@ -3,7 +3,7 @@ import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {ICustomer} from "./model/ICustomer";
 import {ICustomerType} from "./model/ICustomerType";
 import {ICountries} from "./model/ICountries";
-import {Observable} from "rxjs";
+import {Observable, throwError} from "rxjs";
 import {ICustomerDto} from "./dto/ICustomerDto";
 
 @Injectable({
@@ -26,7 +26,7 @@ export class CustomerService {
   }
 
   getAllCustomer() {
-    return this.httpClient.get<ICustomer[]>(this.URL_BE + "/customer/list");
+    return this.httpClient.get<ICustomer[]>(this.URL_BE + "/api/customer/list");
   }
 
   getAllCustomerType() {
@@ -40,18 +40,22 @@ export class CustomerService {
 
   // TinhHD lấy id
   finByIdCustomer(id: number): Observable<ICustomerDto> {
-    return this.httpClient.get<ICustomerDto>(this.URL_BE + '/customer/' + id)
+    return this.httpClient.get<ICustomerDto>(this.URL_BE + '/api/customer/' + id)
   }
 
   //TinhHD thêm một đối tượng
   save(data: ICustomerDto): Observable<ICustomerDto> {
-    return this.httpClient.post<ICustomerDto>(this.URL_BE + '/customer/create', JSON.stringify(data), this.httpOptions);
+    return this.httpClient.post<ICustomerDto>(this.URL_BE + '/api/customer/create', JSON.stringify(data), this.httpOptions);
   }
-  customer:ICustomerDto
+
+  customer: ICustomerDto
+
   //TinhHD update một đối tượng
-  updateCustomer(id:number, data): Observable<ICustomerDto> {
+  updateCustomer(id: number, data): Observable<ICustomerDto> {
     console.log(id)
     console.log(data)
-    return this.httpClient.patch<ICustomerDto>(this.URL_BE + '/customer/' + id ,data);
+    return this.httpClient.patch<ICustomerDto>(this.URL_BE + '/api/customer/' + id, data);
   }
+
+
 }

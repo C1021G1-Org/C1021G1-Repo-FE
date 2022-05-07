@@ -77,13 +77,16 @@
               <label for="firstName">Email <span class="text-danger">(*)</span>: </label>
               <input type="text" class="form-control" id="firstName" placeholder="abc@gmail.com"
                      formControlName="emailCustomer"
-                     required="">
+                     required="" (click)="isEmpty()">
               <div class="text-danger" *ngFor="let validation of validation_messages.emailCustomer">
                 <div class="valid"
                      *ngIf="customer.get('emailCustomer').hasError(validation.type) && (customer.get('emailCustomer').dirty || customer.get('emailCustomer').touched)">
                   {{validation.message}}</div>
               </div>
+              <p class="valid">{{this.emailValid}}
+              </p>
             </div>
+
           </div>
 
 
@@ -107,20 +110,24 @@
               <label for="Name">Điện Thoại <span class="text-danger">(*)</span>: </label>
               <input type="text" class="form-control" id="Name" placeholder="Nhập số điện thoại"
                      formControlName="phoneCustomer"
-                     required="">
+                     required="" (click)="isEmpty()">
+
               <div class="text-danger" *ngFor="let validation of validation_messages.phoneCustomer">
                 <div class="valid"
                      *ngIf="customer.get('phoneCustomer').hasError(validation.type) && (customer.get('phoneCustomer').dirty || customer.get('phoneCustomer').touched)">
                   {{validation.message}}</div>
               </div>
+              <p class="valid">{{this.phone}}
+              </p>
             </div>
+
 
             <div class="col-md-6 mb-3">
               <label for="lastName">Ngày sinh <span class="text-danger">(*)</span>:</label>
               <span *ngIf="customer.get('birthdayCustomer').hasError('required')" class="validator float-right">
                                         Lưu ý : chọn ngày sinh.
                 </span>
-              <input type="date" class="form-control" id="lastName" placeholder=""  required=""
+              <input type="date" class="form-control" id="lastName" placeholder="" required=""
                      formControlName="birthdayCustomer">
             </div>
           </div>
@@ -130,21 +137,23 @@
               <label for="address">Địa chỉ <span class="text-danger">(*)</span>: </label>
               <input type="text" class="form-control" id="address" placeholder="Nhập địa chỉ" required=""
                      formControlName="addressCustomer">
-              <span *ngIf="customer.get('addressCustomer').hasError('required')
-               && (customer.get('addressCustomer').dirty || customer.get('addressCustomer').touched)"
-                    class="validator">
-               Vui lòng nhập địa chỉ!
-                </span>
+              <div class="text-danger" *ngFor="let validation of validation_messages.address">
+                <div class="valid"
+                     *ngIf="customer.get('addressCustomer').hasError(validation.type) && (customer.get('addressCustomer').dirty || customer.get('idCardCustomer').touched)">
+                  {{validation.message}}</div>
+              </div>
             </div>
             <div class="col-md-6 mb-3">
               <label for="last">CMND - Passport <span class="text-danger">(*)</span>:</label>
               <input type="text" class="form-control" id="last" placeholder="Nhập CMND" value="" required=""
-                     formControlName="idCardCustomer">
+                     formControlName="idCardCustomer" (click)="isEmpty()">
               <div class="text-danger" *ngFor="let validation of validation_messages.idCardCustomer">
                 <div class="valid"
                      *ngIf="customer.get('idCardCustomer').hasError(validation.type) && (customer.get('idCardCustomer').dirty || customer.get('idCardCustomer').touched)">
                   {{validation.message}}</div>
               </div>
+              <p class="valid">{{this.idCard}}
+              </p>
             </div>
           </div>
           <div class="row">
@@ -176,9 +185,10 @@
           <br>
 
           <div class="row">
-            <div class="col-md-12  justify-content-md-center d-flex" >
-                <button type="button" class="btn btn-secondary mx-md-3" data-toggle="modal" data-target="#exampleModal">Trở về
-                </button>
+            <div class="col-md-12  justify-content-md-center d-flex">
+              <button type="button" class="btn btn-secondary mx-md-3" data-toggle="modal" data-target="#exampleModal">
+                Trở về
+              </button>
 
               <button type="submit" class="btn btn-primary mx-md-3" [disabled]="customer.invalid">Lưu lại</button>
             </div>

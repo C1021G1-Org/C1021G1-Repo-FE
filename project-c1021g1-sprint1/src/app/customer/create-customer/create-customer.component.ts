@@ -13,11 +13,11 @@ import {Router} from "@angular/router";
 })
 
 export class CreateCustomerComponent implements OnInit {
-
-
   customerType: ICustomerType[];
   country: ICountries[];
-
+  idCard: any;
+  phone: any;
+  emailValid: any;
   validation_messages = {
     nameCustomer: [
       {type: 'required', message: 'Vui lòng nhập họ và tên!'},
@@ -27,6 +27,7 @@ export class CreateCustomerComponent implements OnInit {
     emailCustomer: [
       {type: 'required', message: '  Vui lòng nhập email!'},
       {type: 'email', message: '  Vui lòng nhập email đúng định dạng ví dụ : nguyenvana@gmail.com!'},
+      {type: 'maxlength', message: 'Tối đa 40 kí tự!'}
     ],
     phoneCustomer: [
       {type: 'required', message: 'Vui lòng nhập số điện thoại!'},
@@ -42,6 +43,11 @@ export class CreateCustomerComponent implements OnInit {
     customerType: [
       {type: 'required', message: 'Vui lòng chọn loại khách hàng!'},
     ],
+    address: [
+      {type: 'required', message: 'Vui lòng nhập địa chỉ!'},
+      {type: 'minlength', message: 'Vui lòng trên 5 kí tự!'},
+      {type: 'maxlength', message: 'Vui lòng nhập dưới 40 kí tự!'},
+    ],
   }
 
   customer = new FormGroup({
@@ -50,8 +56,8 @@ export class CreateCustomerComponent implements OnInit {
     birthdayCustomer: new FormControl('', Validators.required),
     idCardCustomer: new FormControl('', [Validators.required, Validators.pattern(/^[0-9]{10}$/)]),
     phoneCustomer: new FormControl('', [Validators.required, Validators.pattern(/^(0?)(3[2-9]|5[6|8|9]|7[0|6-9]|8[0-6|8|9]|9[0-4|6-9])[0-9]{7}$/)]),
-    emailCustomer: new FormControl('', [Validators.required, Validators.email]),
-    addressCustomer: new FormControl('', Validators.required),
+    emailCustomer: new FormControl('', [Validators.required, Validators.email,Validators.maxLength(40)]),
+    addressCustomer: new FormControl('',[ Validators.required,Validators.minLength(5),Validators.maxLength(40)]),
     delFlagCustomer: new FormControl(''),
     countries: new FormControl('', Validators.required),
     customerType: new FormControl('', Validators.required)
@@ -83,9 +89,17 @@ export class CreateCustomerComponent implements OnInit {
           this.customer.reset()
         }, error => {
           this.snackBar.open('Thêm mới không thành công', 'OK');
+          this.idCard =error.error.idCardCustomer
+          this.phone =error.error.phoneCustomer
+          this.emailValid =error.error.emailCustomer
         }
       );
     }
   }
 
+  isEmpty() {
+    this.idCard = ''
+    this.phone = ''
+    this.emailValid = ''
+  }
 }
