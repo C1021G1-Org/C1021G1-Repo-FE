@@ -1,4 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Inject, OnInit} from '@angular/core';
+import {MAT_DIALOG_DATA, MatDialog, MatDialogRef} from "@angular/material/dialog";
+import {NewsService} from "../news.service";
+import {News} from "../news";
+import {ActivatedRoute} from "@angular/router";
+import {MatSnackBar} from "@angular/material/snack-bar";
 
 @Component({
   selector: 'app-delete-news',
@@ -6,10 +11,30 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./delete-news.component.css']
 })
 export class DeleteNewsComponent implements OnInit {
-
-  constructor() { }
+  newId: number
+  title: any;
+  id: any;
+  constructor(private dialog: MatDialogRef<DeleteNewsComponent>,
+              @Inject(MAT_DIALOG_DATA) public data: any,
+              private newsService: NewsService,
+              private snackBar: MatSnackBar
+  ) {
+    this.newId = this.data
+  }
 
   ngOnInit(): void {
+  this.title = this.data.datal.titleNews;
+    console.log(this.title)
+  this.id = this.data.datal.id;
   }
+
+  deleteNews() {
+    this.newsService.deleteNews(this.id).subscribe(() => {
+      this.dialog.close()
+      this.snackBar.open('Đã xóa tin tức thành công', 'OK');
+    })
+  }
+
+
 
 }

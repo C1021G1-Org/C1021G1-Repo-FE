@@ -18,6 +18,8 @@ import {DragDropModule} from "@angular/cdk/drag-drop";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {NgxPaginationModule} from "ngx-pagination";
 import {CdkTableModule} from "@angular/cdk/table";
+import {NewsModule} from "./news/news.module";
+import {MatDialog, MatDialogModule} from "@angular/material/dialog";
 
 @NgModule({
   declarations: [
@@ -28,21 +30,24 @@ import {CdkTableModule} from "@angular/cdk/table";
     SignUpComponent,
     SignInComponent
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    FormsModule,
-    MatSnackBarModule,
-    ReactiveFormsModule,
-    HttpClientModule,
-    MatFormFieldModule,
-    MatDatepickerModule,
-    MatInputModule,
-    DragDropModule,
-    BrowserAnimationsModule,
-    NgxPaginationModule,
-    CdkTableModule
-  ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        FormsModule,
+        MatSnackBarModule,
+        ReactiveFormsModule,
+        HttpClientModule,
+        MatFormFieldModule,
+        MatDatepickerModule,
+        MatInputModule,
+        DragDropModule,
+        BrowserAnimationsModule,
+        NgxPaginationModule,
+        CdkTableModule,
+        NewsModule,
+        MatDialogModule,
+        MatSnackBarModule,
+    ],
   providers: [],
   bootstrap: [AppComponent]
 })
