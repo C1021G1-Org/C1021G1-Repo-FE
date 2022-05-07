@@ -9,10 +9,11 @@ import { ListHistoryTicketComponent } from './list-history-ticket/list-history-t
 import { PrintTicketComponent } from './print-ticket/print-ticket.component';
 import { DeleteTicketComponent } from './delete-ticket/delete-ticket.component';
 import { CreateTicketComponent } from './create-ticket/create-ticket.component';
+import { DetailTicketComponent } from './detail-ticket/detail-ticket.component';
 
 
 @NgModule({
-  declarations: [ListTicketComponent, EditTicketComponent, PaymentTicketComponent, ListHistoryTicketComponent, PrintTicketComponent, DeleteTicketComponent, CreateTicketComponent],
+  declarations: [ListTicketComponent, EditTicketComponent, PaymentTicketComponent, ListHistoryTicketComponent, PrintTicketComponent, DeleteTicketComponent, CreateTicketComponent, DetailTicketComponent],
   imports: [
     CommonModule,
     TicketRoutingModule
