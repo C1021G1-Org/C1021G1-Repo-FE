@@ -5,6 +5,8 @@ import {ICustomerType} from "./model/ICustomerType";
 import {ICountries} from "./model/ICountries";
 import {Observable, throwError} from "rxjs";
 import {ICustomerDto} from "./dto/ICustomerDto";
+import {MatSnackBar} from "@angular/material/snack-bar";
+import {Router} from "@angular/router";
 
 @Injectable({
   providedIn: 'root'
@@ -56,6 +58,4 @@ export class CustomerService {
     console.log(data)
     return this.httpClient.patch<ICustomerDto>(this.URL_BE + '/api/customer/' + id, data);
   }
-
-
 }

@@ -82,6 +82,9 @@ export class EditCustomerComponent implements OnInit {
         this.customerType = data2;
         this.customerService.finByIdCustomer(Number((this.active.snapshot.paramMap.get('id')))).subscribe(data3 => {
           this.customer.patchValue(data3);
+        },error => {
+          this.router.navigateByUrl('/list-customer');
+          this.snackBar.open('Lỗi hệ thống bị tấn công', 'Cảnh báo');
         });
       });
     });
