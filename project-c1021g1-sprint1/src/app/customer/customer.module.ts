@@ -11,10 +11,14 @@ import { DeleteCustomerComponent } from './delete-customer/delete-customer.compo
 
 
 @NgModule({
-  declarations: [CreateCustomerComponent, ListCustomerComponent, EditCustomerComponent, EditCustomerByEmployeeComponent, ViewCustomerComponent, DeleteCustomerComponent],
-  imports: [
-    CommonModule,
-    CustomerRoutingModule
-  ]
+    declarations: [CreateCustomerComponent, ListCustomerComponent, EditCustomerComponent, EditCustomerByEmployeeComponent, ViewCustomerComponent, DeleteCustomerComponent],
+  exports: [
+    ListCustomerComponent,
+    CreateCustomerComponent
+  ],
+    imports: [
+        CommonModule,
+        CustomerRoutingModule
+    ]
 })
 export class CustomerModule { }

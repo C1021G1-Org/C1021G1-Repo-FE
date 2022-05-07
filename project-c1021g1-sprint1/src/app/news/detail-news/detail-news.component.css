@@ -1,0 +1,11 @@
+.form{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+body{
+  font-family: Bahnschrift, serif;
+}
+.borderDetail{
+  background-color: #f3eeee ;
+}
