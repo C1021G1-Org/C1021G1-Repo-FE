@@ -18,6 +18,7 @@ import {DragDropModule} from "@angular/cdk/drag-drop";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {NgxPaginationModule} from "ngx-pagination";
 import {CdkTableModule} from "@angular/cdk/table";
+
 import {NewsModule} from "./news/news.module";
 import {environment} from "../environments/environment";
 import {AngularFireModule} from '@angular/fire';
@@ -25,6 +26,9 @@ import {ToastrModule} from "ngx-toastr";
 import {MatProgressBarModule} from '@angular/material/progress-bar';
 import {ngxLoadingAnimationTypes, NgxLoadingModule} from "ngx-loading";
 import {MatDialog, MatDialogModule} from "@angular/material/dialog";
+
+
+
 
 
 @NgModule({
@@ -39,6 +43,7 @@ import {MatDialog, MatDialogModule} from "@angular/material/dialog";
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     AppRoutingModule,
     FormsModule,
     MatSnackBarModule,
@@ -48,9 +53,9 @@ import {MatDialog, MatDialogModule} from "@angular/material/dialog";
     MatDatepickerModule,
     MatInputModule,
     DragDropModule,
-    BrowserAnimationsModule,
     NgxPaginationModule,
     CdkTableModule,
+
     NewsModule,
 
     ToastrModule.forRoot(),
@@ -68,6 +73,7 @@ import {MatDialog, MatDialogModule} from "@angular/material/dialog";
   providers: [
     MatDialogModule,
     MatSnackBarModule,
+
   ],
   bootstrap: [AppComponent]
 })

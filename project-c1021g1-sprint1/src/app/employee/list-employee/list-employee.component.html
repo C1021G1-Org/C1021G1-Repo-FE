@@ -1,1 +1,146 @@
-<p>list-employee works!</p>
+<body>
+<div id="layout" class="container-fluid">
+  <h1>Quản lý nhân viên</h1>
+  <div class="row">
+    <div class="col-2"></div>
+    <div class="col-10 d-flex justify-content-between">
+      <div class="form-inline">
+        <button class="btn btn-primary">
+          <i class="fa fa-user-plus" aria-hidden="true"></i>
+        </button>
+      </div>
+      <div class="form-inline">
+        <div class="input-group-prepend">
+          <label class="mr-sm-2" style="color: white">Tìm kiếm theo:</label>
+        </div>
+        <input class="form-control mr-sm-2" type="search" placeholder="Tên" #name>
+        <input class="form-control mr-sm-2" type="search" placeholder="Mã nhân viên" #code>
+        <input class="form-control mr-sm-2" type="search" placeholder="Tài khoản" #email>
+        <button class="btn btn-info my-2 my-sm-8" type="submit" (click)="search(name.value,code.value,email.value)">
+          <i class="fa fa-search" aria-hidden="true"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-2">
+      <table class="table table-side-bar">
+        <thead class="table-dark">
+        <tr>
+          <th>
+            Chức Năng
+          </th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+          <td>
+            <a href="">Thông tin Admin</a>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <a href="">Quản lý nhân viên</a>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <a href="">Thống kê</a>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="col-10">
+      <table class="table table-striped table-bordered">
+        <thead class="table-dark" [class.display]="checkNull">
+        <tr>
+          <th class="text-center extra-small">STT</th>
+          <th class="text-center small">Mã Nhân Viên</th>
+          <th class="text-center medium">Họ Tên</th>
+          <th class="text-center small">Ngày Sinh</th>
+          <th class="text-center small">Giới Tính</th>
+          <th class="text-center medium">Tài Khoản</th>
+          <th class="text-center small">Số Điện Thoại</th>
+          <th class="text-center extra-medium">Địa Chỉ</th>
+          <th class="text-center small">Phân Quyền</th>
+          <th class="text-center small" colspan="2">Thao Tác</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let employee of employees, index as i">
+          <th class="table-text-end">{{i + 1}}</th>
+          <td>{{employee.codeEmployee}}</td>
+          <td>{{employee.nameEmployee}}</td>
+          <td class="table-text-end">{{employee.birthdayEmployee | date: 'dd/MM/yyyy'}}</td>
+          <td>{{employee.genderEmployee ? 'Nam' : 'Nữ'}}</td>
+          <td>{{employee.emailEmployee}}</td>
+          <td class="table-text-end">{{employee.phoneEmployee}}</td>
+          <td>
+            <p>
+              {{employee.addressEmployee}}
+            </p>
+          </td>
+          <td>
+            {{employee.employeeType.nameEmployeeType}}
+          </td>
+          <td class="text-center " colspan="2">
+            <div class="dropdown">
+              <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">
+              </button>
+              <div class="dropdown-menu dropdown-menu-right">
+                <a class="dropdown-item text-center">Sửa</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item text-center" (click)="dialogDeleteCustomer(employee.id)">Xóa</a>
+              </div>
+            </div>
+          </td>
+        </tr>
+        <tr [class.display]="!checkNull">
+          <td class="text-center" colspan="10">Không tìm thấy!</td>
+        </tr>
+        </tbody>
+      </table>
+
+      <div [class.display]="checkNull">
+        <div class="row d-flex justify-content-center">
+          <nav aria-label="Page navigation example">
+            <ul class="pagination">
+              <li class="page-item">
+                <a class="page-link" style="color: black"
+                   (click)="firstPage(name.value,code.value,email.value)"
+                   [class.disableBtn]="indexEmployee <= 0">
+                  <span>&laquo;</span>
+                </a>
+              </li>
+              <li class="page-item">
+                <a class="page-link" style="color: black" (click)="previousPage(name.value,code.value,email.value)"
+                   [class.disableBtn]="indexEmployee <= 0">
+                  <span>&lt;</span>
+                </a>
+              </li>
+              <li class="page-item"><a class="page-link" style="color: black; cursor: no-drop">{{indexEmployee + 1}}</a></li>
+              <li class="page-item"><a class="page-link" style="color: black; cursor: no-drop">/</a></li>
+              <li class="page-item"><a class="page-link" style="color: black; cursor: no-drop">{{totalEmployee + 1}}</a></li>
+              <li class="page-item">
+                <a class="page-link" style="color: black" (click)="nextPage(name.value,code.value,email.value)"
+                   [class.disableBtn]="indexEmployee >= totalEmployee">
+                  <span>&gt;</span>
+                </a>
+              </li>
+              <li class="page-item">
+                <a class="page-link" style="color: black" (click)="lastPage(name.value,code.value,email.value)"
+                   [class.disableBtn]="indexEmployee >= totalEmployee">
+                  <span>&raquo;</span>
+                </a>
+              </li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</body>

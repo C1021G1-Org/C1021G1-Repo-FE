@@ -1,5 +1,6 @@
-import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
+import {NgModule} from '@angular/core';
+import {Routes, RouterModule} from '@angular/router';
+import {EmployeeRoutingModule} from "./employee/employee-routing.module";
 
 
 
@@ -11,12 +12,17 @@ import { Routes, RouterModule } from '@angular/router';
 const routes: Routes = [
   {
     path: "news", loadChildren: () => import('./news/news.module').then(mod => mod.NewsModule)
+  },
+  { path: 'employee',
+    loadChildren: () => import ('./employee/employee.module').then(module => module.EmployeeModule)
   }
 ];
 
-
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [
+    RouterModule.forRoot(routes),
+    EmployeeRoutingModule],
   exports: [RouterModule]
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {
+}
