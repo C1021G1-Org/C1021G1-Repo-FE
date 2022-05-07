@@ -18,6 +18,8 @@ import {DragDropModule} from "@angular/cdk/drag-drop";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {NgxPaginationModule} from "ngx-pagination";
 import {CdkTableModule} from "@angular/cdk/table";
+import {TicketModule} from "./ticket/ticket.module";
+import {MatSortModule} from "@angular/material/sort";
 
 import {NewsModule} from "./news/news.module";
 import {environment} from "../environments/environment";
@@ -46,6 +48,7 @@ import {MatDialog, MatDialogModule} from "@angular/material/dialog";
     BrowserAnimationsModule,
     AppRoutingModule,
     FormsModule,
+    MatDialogModule,
     MatSnackBarModule,
     ReactiveFormsModule,
     HttpClientModule,
@@ -55,9 +58,9 @@ import {MatDialog, MatDialogModule} from "@angular/material/dialog";
     DragDropModule,
     NgxPaginationModule,
     CdkTableModule,
-
+    TicketModule,
+    MatSortModule,
     NewsModule,
-
     ToastrModule.forRoot(),
     AngularFireModule.initializeApp(environment.firebaseConfig),
     MatProgressBarModule,
@@ -79,3 +82,5 @@ import {MatDialog, MatDialogModule} from "@angular/material/dialog";
 })
 export class AppModule {
 }
+
+//
