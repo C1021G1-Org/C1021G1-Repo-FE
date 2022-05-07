@@ -5,6 +5,7 @@ import {ICustomerType} from "./model/ICustomerType";
 import {ICountries} from "./model/ICountries";
 import {Observable} from "rxjs";
 import {ICustomerDto} from "./dto/ICustomerDto";
+import {IPersonalDto} from "./dto/IPersonalDto";
 
 @Injectable({
   providedIn: 'root'
@@ -53,5 +54,15 @@ export class CustomerService {
     console.log(id)
     console.log(data)
     return this.httpClient.patch<ICustomerDto>(this.URL_BE + '/customer/' + id ,data);
+  }
+
+  // ThangDBX lấy id
+  findPersonalId(id : number){
+    return this.httpClient.get(this.URL_BE + '/customer/view/' + id);
+  }
+
+  // ThangDBX update thong tin ca nhan
+  updatePersonalInfo(id : number, data : any): Observable<IPersonalDto>{
+    return this.httpClient.patch<IPersonalDto>(this.URL_BE + 'customer/edit/update' + id, data)
   }
 }

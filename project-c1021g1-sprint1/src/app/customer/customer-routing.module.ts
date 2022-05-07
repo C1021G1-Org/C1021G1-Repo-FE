@@ -4,6 +4,8 @@ import {ListCustomerComponent} from "./list-customer/list-customer.component";
 import {CreateCustomerComponent} from "./create-customer/create-customer.component";
 import {DeleteCustomerComponent} from "./delete-customer/delete-customer.component";
 import {EditCustomerComponent} from "./edit-customer/edit-customer.component";
+import {ViewCustomerComponent} from "./view-customer/view-customer.component";
+import {EditCustomerByEmployeeComponent} from "./edit-customer-by-employee/edit-customer-by-employee.component";
 
 
 const routes: Routes = [
@@ -18,6 +20,12 @@ const routes: Routes = [
   },
   {
     path: 'edit-customer/:id', component: EditCustomerComponent
+  },
+  {
+    path: 'view-customer/:id', component: ViewCustomerComponent
+  },
+  {
+    path: 'edit-personal/:id', component: EditCustomerByEmployeeComponent
   },
 ];
 
