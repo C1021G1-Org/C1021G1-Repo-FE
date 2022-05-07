@@ -1,7 +1,7 @@
 export interface AirlineType {
   id: number;
-  nameFlight: string;
-  priceFlight: string;
+  nameAirline: string;
+  priceAirline: string;
   imageAirline: string;
   delFlagAirline: boolean;
 }
