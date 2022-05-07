@@ -45,26 +45,35 @@
     </div>
     <div class="col-10">
 
-      <table class="table table-striped table-bordered" >
+      <table class="table table-striped table-bordered">
         <thead class="table-dark" style="text-align: center">
         <tr>
-          <th >Nơi đi</th>
-          <th >Nơi đến</th>
-          <th >Ngày đặt</th>
-          <th >Ngày bay</th>
+          <th>Nơi đi</th>
+          <th>Nơi đến</th>
+          <th>Ngày đặt</th>
+          <th>Ngày bay</th>
           <th>Giá(VND)</th>
           <th>Tình trạng</th>
         </tr>
         </thead>
         <tbody>
-        <tr *ngFor="let item of ticketHistoryList">
+        <tr *ngFor="let item of ticketHistoryList" style="height: 65px">
           <td>{{item.seat.flightSeat.fromFlight}}</td>
           <td>{{item.seat.flightSeat.toFlight}}</td>
           <td style="text-align: center">{{item.seat.flightSeat.dateStart | date: "dd-MM-yyyy"}}</td>
           <td style="text-align: center">{{item.seat.flightSeat.dateEnd | date: "dd-MM-yyyy"}}</td>
           <td style="text-align: right">{{item.priceTicket|currency:'VND':'symbol':'3.0'}}</td>
           <td
-            style="text-align: left" >{{item.statusTicket ? "Đã thanh toán" : (item.statusTicket == 0 ? "Chưa thanh toán" : "Đã hủy")}}
+            *ngIf="item.statusTicket==1"
+            style="text-align: left;color: green">{{item.statusTicket ? "Đã thanh toán" : (item.statusTicket == 0 ? "Chưa thanh toán" : "Đã hủy")}}
+          </td>
+          <td
+            *ngIf="item.statusTicket==0"
+            style="text-align: left;color: blue">{{item.statusTicket ? "Đã thanh toán" : (item.statusTicket == 0 ? "Chưa thanh toán" : "Đã hủy")}}
+          </td>
+          <td
+            *ngIf="item.statusTicket!=0&&item.statusTicket!=1"
+            style="text-align: left;color: red">{{item.statusTicket ? "Đã thanh toán" : (item.statusTicket == 0 ? "Chưa thanh toán" : "Đã hủy")}}
           </td>
         </tr>
         </tbody>

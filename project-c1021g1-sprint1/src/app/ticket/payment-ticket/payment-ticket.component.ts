@@ -240,4 +240,13 @@ export class PaymentTicketComponent implements OnInit {
     console.log(this.totalPagination)
     this.getTicketPage(this.indexPagination);
   }
+
+  //  SonNH Sortinh
+  key: string = "id";
+  reverse: boolean =false;
+
+  Sort(key: any) {
+    this.key = key;
+    this.reverse = !this.reverse;
+  }
 }
