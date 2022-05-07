@@ -5,15 +5,17 @@ import {Seat} from "../../flight/model/flight";
 export interface Ticket {
   id: number;
   codeTicket: string;
-  emailTicket:string;
-  phoneTicket:string;
-  genderTicket:Boolean;
-  statusTicket:Boolean;
-  priceTicket:number;
-  delFlagTicket:Boolean;
-  pointTicket:number;
-  birthdayTicket:string;
+  emailTicket: string;
+  phoneTicket: string;
+  genderTicket: Boolean;
+  statusTicket: Boolean;
+  priceTicket: number;
+  delFlagTicket: Boolean;
+  pointTicket: number;
+  idCard: string;
+  dateTicket: string;
+  birthdayTicket: string;
   employee: Employee;
   customer: Customer;
-  seat:Seat;
+  seat: Seat;
 }
