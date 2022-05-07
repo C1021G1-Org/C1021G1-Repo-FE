@@ -19,8 +19,19 @@ import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {NgxPaginationModule} from "ngx-pagination";
 import {CdkTableModule} from "@angular/cdk/table";
 import {TicketModule} from "./ticket/ticket.module";
-import {MatDialogModule} from "@angular/material/dialog";
 import {MatSortModule} from "@angular/material/sort";
+
+import {NewsModule} from "./news/news.module";
+import {environment} from "../environments/environment";
+import {AngularFireModule} from '@angular/fire';
+import {ToastrModule} from "ngx-toastr";
+import {MatProgressBarModule} from '@angular/material/progress-bar';
+import {ngxLoadingAnimationTypes, NgxLoadingModule} from "ngx-loading";
+import {MatDialog, MatDialogModule} from "@angular/material/dialog";
+
+
+
+
 
 @NgModule({
   declarations: [
@@ -29,10 +40,12 @@ import {MatSortModule} from "@angular/material/sort";
     FooterComponent,
     BodyComponent,
     SignUpComponent,
-    SignInComponent
+    SignInComponent,
+
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     AppRoutingModule,
     FormsModule,
     MatDialogModule,
@@ -43,13 +56,28 @@ import {MatSortModule} from "@angular/material/sort";
     MatDatepickerModule,
     MatInputModule,
     DragDropModule,
-    BrowserAnimationsModule,
     NgxPaginationModule,
     CdkTableModule,
     TicketModule,
-    MatSortModule
+    MatSortModule,
+    NewsModule,
+    ToastrModule.forRoot(),
+    AngularFireModule.initializeApp(environment.firebaseConfig),
+    MatProgressBarModule,
+    NgxLoadingModule.forRoot({
+      animationType: ngxLoadingAnimationTypes.wanderingCubes,
+      backdropBackgroundColour: 'rgba(0,0,0,0.1)',
+      backdropBorderRadius: '4px',
+      primaryColour: '#ffffff',
+      secondaryColour: '#ffffff',
+      tertiaryColour: '#ffffff'
+    })
   ],
-  providers: [],
+  providers: [
+    MatDialogModule,
+    MatSnackBarModule,
+
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {
