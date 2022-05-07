@@ -34,6 +34,7 @@ export class PaymentTicketComponent implements OnInit {
 
   ticket: Ticket;
 
+
   priceForEachTicket: number;
 
   constructor(private ticketService: TicketService,
@@ -43,7 +44,9 @@ export class PaymentTicketComponent implements OnInit {
 
 
   ngOnInit(): void {
+
     this.getALlTicketByCustomerId();
+
   }
 
   getALlTicketByCustomerId() {
