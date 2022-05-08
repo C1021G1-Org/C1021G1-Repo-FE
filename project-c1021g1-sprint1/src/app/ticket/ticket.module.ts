@@ -10,13 +10,19 @@ import { PrintTicketComponent } from './print-ticket/print-ticket.component';
 import { DeleteTicketComponent } from './delete-ticket/delete-ticket.component';
 import { CreateTicketComponent } from './create-ticket/create-ticket.component';
 import { DetailTicketComponent } from './detail-ticket/detail-ticket.component';
+import {ReactiveFormsModule} from "@angular/forms";
 
 
 @NgModule({
-  declarations: [ListTicketComponent, EditTicketComponent, PaymentTicketComponent, ListHistoryTicketComponent, PrintTicketComponent, DeleteTicketComponent, CreateTicketComponent, DetailTicketComponent],
-  imports: [
-    CommonModule,
-    TicketRoutingModule
-  ]
+    declarations: [ListTicketComponent, EditTicketComponent, PaymentTicketComponent, ListHistoryTicketComponent, PrintTicketComponent, DeleteTicketComponent, CreateTicketComponent, DetailTicketComponent],
+  exports: [
+    EditTicketComponent,
+    PrintTicketComponent
+  ],
+    imports: [
+        CommonModule,
+        TicketRoutingModule,
+        ReactiveFormsModule
+    ]
 })
 export class TicketModule { }
