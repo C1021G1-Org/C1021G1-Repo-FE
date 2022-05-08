@@ -8,13 +8,19 @@ import { EditCustomerComponent } from './edit-customer/edit-customer.component';
 import { EditCustomerByEmployeeComponent } from './edit-customer-by-employee/edit-customer-by-employee.component';
 import { ViewCustomerComponent } from './view-customer/view-customer.component';
 import { DeleteCustomerComponent } from './delete-customer/delete-customer.component';
+import {MatDialogModule} from "@angular/material/dialog";
+import {ReactiveFormsModule} from "@angular/forms";
+import {MatRadioModule} from "@angular/material/radio";
 
 
 @NgModule({
   declarations: [CreateCustomerComponent, ListCustomerComponent, EditCustomerComponent, EditCustomerByEmployeeComponent, ViewCustomerComponent, DeleteCustomerComponent],
   imports: [
     CommonModule,
-    CustomerRoutingModule
+    CustomerRoutingModule,
+    MatDialogModule,
+    ReactiveFormsModule,
+    MatRadioModule
   ]
 })
 export class CustomerModule { }

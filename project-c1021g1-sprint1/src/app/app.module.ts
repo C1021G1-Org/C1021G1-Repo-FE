@@ -18,6 +18,11 @@ import {DragDropModule} from "@angular/cdk/drag-drop";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {NgxPaginationModule} from "ngx-pagination";
 import {CdkTableModule} from "@angular/cdk/table";
+import {CustomerModule} from "./customer/customer.module";
+import {ToastrModule} from "ngx-toastr";
+import {environment} from "../environments/environment";
+import {AngularFireModule} from "@angular/fire";
+import {ForgetedPasswordComponent} from "./login/forgeted-password/forgeted-password.component";
 
 @NgModule({
   declarations: [
@@ -26,7 +31,8 @@ import {CdkTableModule} from "@angular/cdk/table";
     FooterComponent,
     BodyComponent,
     SignUpComponent,
-    SignInComponent
+    SignInComponent,
+    ForgetedPasswordComponent
   ],
   imports: [
     BrowserModule,
@@ -41,7 +47,10 @@ import {CdkTableModule} from "@angular/cdk/table";
     DragDropModule,
     BrowserAnimationsModule,
     NgxPaginationModule,
-    CdkTableModule
+    CdkTableModule,
+    CustomerModule,
+    ToastrModule.forRoot(),
+    AngularFireModule.initializeApp(environment.firebaseConfig)
   ],
   providers: [],
   bootstrap: [AppComponent]
