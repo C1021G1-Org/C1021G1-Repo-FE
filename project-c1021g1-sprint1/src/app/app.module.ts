@@ -19,6 +19,11 @@ import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {NgxPaginationModule} from "ngx-pagination";
 import {CdkTableModule} from "@angular/cdk/table";
 import {CustomerModule} from "./customer/customer.module";
+import {ToastrModule} from "ngx-toastr";
+import {environment} from "../environments/environment";
+import {AngularFireModule} from "@angular/fire";
+import {ForgetedPasswordComponent} from "./login/forgeted-password/forgeted-password.component";
+
 
 @NgModule({
   declarations: [
@@ -27,24 +32,30 @@ import {CustomerModule} from "./customer/customer.module";
     FooterComponent,
     BodyComponent,
     SignUpComponent,
-    SignInComponent
+    SignInComponent,
+    ForgetedPasswordComponent
   ],
-    imports: [
-        BrowserModule,
-      BrowserAnimationsModule,
-        AppRoutingModule,
-        FormsModule,
-        MatSnackBarModule,
-        ReactiveFormsModule,
-        HttpClientModule,
-        MatFormFieldModule,
-        MatDatepickerModule,
-        MatInputModule,
-        DragDropModule,
-        NgxPaginationModule,
-        CdkTableModule,
-        CustomerModule
-    ],
+
+  imports: [
+    BrowserModule,
+    BrowserAnimationsModule,
+    AppRoutingModule,
+    FormsModule,
+    MatSnackBarModule,
+    ReactiveFormsModule,
+    HttpClientModule,
+    MatFormFieldModule,
+    MatDatepickerModule,
+    MatInputModule,
+    DragDropModule,
+    BrowserAnimationsModule,
+    NgxPaginationModule,
+    CdkTableModule,
+    CustomerModule,
+    ToastrModule.forRoot(),
+    AngularFireModule.initializeApp(environment.firebaseConfig)
+  ],
+
   providers: [],
   bootstrap: [AppComponent]
 })
