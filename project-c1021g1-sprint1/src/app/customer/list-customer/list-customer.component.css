@@ -109,13 +109,12 @@
 }
 * {
   box-sizing: border-box;
-  background-image: url("https://balotrainghiem.com/wp-content/uploads/2017/05/DSC_3024.jpg");
 
 }
 
 .container-fluid {
   padding: 20px;
-  /*background-image: url("https://balotrainghiem.com/wp-content/uploads/2017/05/DSC_3024.jpg");*/
+  background-image: url("https://balotrainghiem.com/wp-content/uploads/2017/05/DSC_3024.jpg");
   background-size: 100%;
   font-family: "Bahnschrift";
   font-size: 15px;

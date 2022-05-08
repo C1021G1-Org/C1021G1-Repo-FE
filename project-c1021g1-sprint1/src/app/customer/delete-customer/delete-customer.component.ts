@@ -23,7 +23,7 @@ export class DeleteCustomerComponent implements OnInit {
 
   ngOnInit(): void {
     this.id = this.data.data1;
-    this.customerService.finByIdCustomer(this.id).subscribe(data => {
+    this.customerService.finByIdCustomers(this.id).subscribe(data => {
       console.log(data);
       this.customer = data;
     });

@@ -119,7 +119,7 @@
                           data-toggle="dropdown" aria-expanded="false">
                   </button>
                   <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                    <a class="dropdown-item" routerLink="/edit-customer">Sửa</a>
+                    <a class="dropdown-item" [routerLink]="['/edit-customer',customer.id]">Sửa</a>
                     <a class="dropdown-item" (click)="openDialog(customer.id)">Xóa</a>
                   </div>
                 </div>

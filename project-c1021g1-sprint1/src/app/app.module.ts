@@ -24,6 +24,7 @@ import {environment} from "../environments/environment";
 import {AngularFireModule} from "@angular/fire";
 import {ForgetedPasswordComponent} from "./login/forgeted-password/forgeted-password.component";
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -34,8 +35,10 @@ import {ForgetedPasswordComponent} from "./login/forgeted-password/forgeted-pass
     SignInComponent,
     ForgetedPasswordComponent
   ],
+
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     AppRoutingModule,
     FormsModule,
     MatSnackBarModule,
@@ -52,6 +55,7 @@ import {ForgetedPasswordComponent} from "./login/forgeted-password/forgeted-pass
     ToastrModule.forRoot(),
     AngularFireModule.initializeApp(environment.firebaseConfig)
   ],
+
   providers: [],
   bootstrap: [AppComponent]
 })

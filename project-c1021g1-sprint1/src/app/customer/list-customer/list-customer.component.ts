@@ -5,6 +5,7 @@ import {MatDialog} from "@angular/material/dialog";
 import {DeleteCustomerComponent} from "../delete-customer/delete-customer.component";
 import {FormBuilder, FormGroup} from "@angular/forms";
 import {MatSnackBar} from "@angular/material/snack-bar";
+import {Router} from "@angular/router";
 
 
 @Component({
@@ -22,7 +23,8 @@ export class ListCustomerComponent implements OnInit {
 
   constructor(private customerService: CustomerService,
               private matDialog: MatDialog,
-              private snackBar: MatSnackBar) {
+              private snackBar: MatSnackBar,
+              private router: Router) {
   }
 
   ngOnInit(): void {
@@ -35,10 +37,10 @@ export class ListCustomerComponent implements OnInit {
 //LongLT triển khai tìm kiếm
   searchAll(value: string, value2: string, page = 0) {
     if (value2 == '') {
+
       this.snackBar.open('Vui lòng nhập kí tự', 'Lỗi', {
         duration: 2000
       })
-
     }else {
       this.customerService.searchCustomer(value, value2, page).subscribe(data => {
         if (data == null) {
@@ -104,7 +106,7 @@ export class ListCustomerComponent implements OnInit {
 
   //LongLT lấy id
   getInfor(id: number) {
-    this.customerService.finByIdCustomer(id).subscribe(value => {
+    this.customerService.finByIdCustomers(id).subscribe(value => {
       this.customer = value;
     })
   }
