@@ -1,18 +1,17 @@
 <section class=" section1 ">
   <div class="container-fluid" style="background: rgba(255, 255, 255,0.8)">
     <div class="row">
-      <div class="col-md-2 " style="margin-top: 80px;background: rgba(255, 255, 255,0.5)">
+      <div class="col-md-2 " style="margin-top: 80px;">
 
-        <table class="table ">
-
-          <thead class="table-dark">
+        <table class="table table-striped table-bordered table-side-bar" style="background: rgba(255, 255, 255,1)">
+          <thead class="table-dark ">
           <tr>
-            <td>Chức Năng</td>
+            <th>Chức Năng</th>
           </tr>
           </thead>
           <tbody>
           <tr>
-            <td><h6>Quản lý khách hàng <i class="fa fa-angle-down" style="font-size:24px"></i></h6></td>
+            <td routerLink="/api-customer" role="button"><h6>Quản lý khách hàng <i class="fa fa-angle-down" style="font-size:24px" ></i></h6></td>
           </tr>
           <tr>
             <td><i class="fa fa-arrow-right" style="font-size:15px"></i>Thanh toán</td>
@@ -27,17 +26,14 @@
           <tr>
             <td><i class="fa fa-arrow-right" style="font-size:15px"></i>Thông tin admin</td>
           </tr>
-          <tr>
-            <td><i class="fa fa-arrow-right" style="font-size:15px"></i>Quản lí nhân viên</td>
-          </tr>
+          <!--            <tr>-->
+          <!--              <td><i class="fa fa-arrow-right" style="font-size:15px"></i>Quản lí nhân viên</td>-->
+          <!--            </tr>-->
           <tr></tr>
 
           <tr>
             <td><h6>Quản lí nhân viên <i class="fa fa-angle-down" style="font-size:24px"></i></h6></td>
 
-          </tr>
-          <tr>
-            <td><i class="fa fa-arrow-right" style="font-size:15px"></i>Quản lí khách hàng</td>
           </tr>
           <tr>
             <td><i class="fa fa-arrow-right" style="font-size:15px"></i>Quản lí bán vé</td>
@@ -254,7 +250,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Không</button>
-        <button type="button" class="btn btn-danger" routerLink="/list-customer">Có</button>
+        <button type="button" class="btn btn-danger" data-dismiss="modal" [routerLink]="['/api-customer']">Có</button>
       </div>
     </div>
   </div>

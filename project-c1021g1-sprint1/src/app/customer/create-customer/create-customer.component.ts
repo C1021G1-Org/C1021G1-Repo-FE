@@ -65,7 +65,7 @@ export class CreateCustomerComponent implements OnInit {
 
   constructor(private customerService: CustomerService,
               private snackBar: MatSnackBar,
-              private route: Router) {
+              private router: Router) {
   }
 
 
@@ -96,7 +96,6 @@ export class CreateCustomerComponent implements OnInit {
       );
     }
   }
-
   isEmpty() {
     this.idCard = ''
     this.phone = ''

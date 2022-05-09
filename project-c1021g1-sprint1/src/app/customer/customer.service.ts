@@ -8,29 +8,14 @@ import {ICountries} from "./model/ICountries";
 
 import {IPersonalDto} from "./model/IPersonalDto";
 import {Observable} from "rxjs";
-
-
-// import {Observable, throwError} from "rxjs";
 import {ICustomerDto} from "./dto/ICustomerDto";
-import {MatSnackBar} from "@angular/material/snack-bar";
-import {Router} from "@angular/router";
 
 
 @Injectable({
   providedIn: 'root'
 })
 export class CustomerService {
-
-
-  private readonly URL_BE = 'http://localhost:8080/api';
-  // httpOptions = {
-  //   headers: new HttpHeaders( {
-  //     'Content-Type': 'application/json'
-  //   })
-  // };
-
-  private readonly URL_CT = 'http://localhost:8080';
-
+  private readonly URL_BE = 'http://localhost:8080';
 
   httpOptions = {
     headers: new HttpHeaders({
@@ -43,70 +28,55 @@ export class CustomerService {
 
   constructor(private httpClient: HttpClient) {
   }
-
-
   //LongLT lấy list customer
   getAllCustomer(index: number) {
-        return this.httpClient.get<ICustomer[]>(this.URL_BE + "/customer/list?page=" + index)
+        return this.httpClient.get<ICustomer[]>(this.URL_BE + "/api/customer/list?page=" + index)
   }
-
-  // //LongLT lấy list customerType
-  // getAllCustomerType() {
-  //   return  this.httpClient.get<ICustomerType[]>(this.URL_BE + "/customerType")
-  // }
-  // //LongLT lấy list country
-  // getAllCountries() {
-  //   return this.httpClient.get<ICountries[]>(this.URL_BE + "/customer/countries")
-  // }
-
   //LongLT lay id để xóa
   finByIdCustomers(id: number) {
-    return this.httpClient.get<ICustomer>(this.URL_BE +'/customer/'+ id)
+    return this.httpClient.get<ICustomer>(this.URL_BE +'/api/customer/'+ id)
   }
   //LongLT triển khai xóa
   deleteCustomer(idCustomer: number){
-    return this.httpClient.delete(this.URL_BE + '/customer/delete/'+ idCustomer);
+    console.log(idCustomer)
+    return this.httpClient.delete(this.URL_BE + '/api/customer/delete/'+ idCustomer);
   }
   //LongLT triển khai tìm kiếm
   searchCustomer(value: string, value2: string, page: number) {
-      return this.httpClient.get<any>(this.URL_BE + '/customer/search?option=' + value + '&keyword=' + value2 + '&page=' + page);
+      return this.httpClient.get<any>(this.URL_BE + '/api/customer/search?option=' + value + '&keyword=' + value2 + '&page=' + page);
   }
   // ThangDBX lấy id
   findPersonalId(id : number){
-    return this.httpClient.get(this.URL_BE + '/customer/view/' + id);
+    return this.httpClient.get(this.URL_BE + '/api/customer/view/' + id);
   }
 
 // ThangDBX update thong tin ca nhan
   updatePersonalInfo(id : number, data : IPersonalDto): Observable<IPersonalDto> {
-    return this.httpClient.patch<IPersonalDto>(this.URL_BE + '/customer/edit/' + id, data)
+    return this.httpClient.patch<IPersonalDto>(this.URL_BE + '/api/customer/edit/' + id, data)
   }
 
   getAllCustomerType() {
-    return this.httpClient.get<ICustomerType[]>(this.URL_BE + "/customer/customerType")
+    return this.httpClient.get<ICustomerType[]>(this.URL_BE + "/customerType-list")
   }
 
   getAllCountries() {
-    return this.httpClient.get<ICountries[]>(this.URL_CT + "/country/api/v1")
+    return this.httpClient.get<ICountries[]>(this.URL_BE + "/country/api/v1")
   }
-
 
   // TinhHD lấy id để sửa
   finByIdCustomer(id: number): Observable<ICustomerDto> {
-    return this.httpClient.get<ICustomerDto>(this.URL_BE + '/customer/' + id)
+    return this.httpClient.get<ICustomerDto>(this.URL_BE + '/api/customer/' + id)
   }
 
   //TinhHD thêm một đối tượng
   save(data: ICustomerDto): Observable<ICustomerDto> {
-    return this.httpClient.post<ICustomerDto>(this.URL_BE + '/customer/create', JSON.stringify(data), this.httpOptions);
+    return this.httpClient.post<ICustomerDto>(this.URL_BE + '/api/customer/create', JSON.stringify(data), this.httpOptions);
   }
-
-  customer: ICustomerDto
 
   //TinhHD update một đối tượng
   updateCustomer(id: number, data): Observable<ICustomerDto> {
     console.log(id)
     console.log(data)
-    return this.httpClient.patch<ICustomerDto>(this.URL_BE + '/customer/' + id, data);
-
+    return this.httpClient.patch<ICustomerDto>(this.URL_BE + '/api/customer/' + id, data);
   }
 }

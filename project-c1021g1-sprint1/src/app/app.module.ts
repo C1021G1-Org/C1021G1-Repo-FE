@@ -23,6 +23,7 @@ import {ToastrModule} from "ngx-toastr";
 import {environment} from "../environments/environment";
 import {AngularFireModule} from "@angular/fire";
 import {ForgetedPasswordComponent} from "./login/forgeted-password/forgeted-password.component";
+import {MatSliderModule} from "@angular/material/slider";
 
 
 @NgModule({
@@ -52,6 +53,7 @@ import {ForgetedPasswordComponent} from "./login/forgeted-password/forgeted-pass
     NgxPaginationModule,
     CdkTableModule,
     CustomerModule,
+    MatSliderModule,
     ToastrModule.forRoot(),
     AngularFireModule.initializeApp(environment.firebaseConfig)
   ],

@@ -11,6 +11,7 @@ import { DeleteCustomerComponent } from './delete-customer/delete-customer.compo
 import {MatDialogModule} from "@angular/material/dialog";
 import {ReactiveFormsModule} from "@angular/forms";
 import {MatRadioModule} from "@angular/material/radio";
+import {MatSliderModule} from "@angular/material/slider";
 
 
 @NgModule({
@@ -20,7 +21,8 @@ import {MatRadioModule} from "@angular/material/radio";
     CustomerRoutingModule,
     MatDialogModule,
     ReactiveFormsModule,
-    MatRadioModule
+    MatRadioModule,
+    MatSliderModule,
   ]
 })
 export class CustomerModule { }

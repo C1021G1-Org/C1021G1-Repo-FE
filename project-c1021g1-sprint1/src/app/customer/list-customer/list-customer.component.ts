@@ -36,12 +36,12 @@ export class ListCustomerComponent implements OnInit {
 
 //LongLT triển khai tìm kiếm
   searchAll(value: string, value2: string, page = 0) {
-    if (value2 == '') {
-
-      this.snackBar.open('Vui lòng nhập kí tự', 'Lỗi', {
-        duration: 2000
-      })
-    }else {
+    // if (value2 == '') {
+    //
+    //   this.snackBar.open('Vui lòng nhập kí tự', 'Lỗi', {
+    //     duration: 2000
+    //   })
+    // }else {
       this.customerService.searchCustomer(value, value2, page).subscribe(data => {
         if (data == null) {
           this.customerList = [];
@@ -56,7 +56,7 @@ export class ListCustomerComponent implements OnInit {
           this.checkNull = false;
     }
       });
-    }
+    // }
   }
 
   // << LongLT phân trang
@@ -133,6 +133,5 @@ export class ListCustomerComponent implements OnInit {
         this.ngOnInit();
       });
     });
-
   }
 }

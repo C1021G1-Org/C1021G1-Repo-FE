@@ -34,7 +34,7 @@ export class DeleteCustomerComponent implements OnInit {
         this.customerService.deleteCustomer(this.id).subscribe( () => {
           console.log("Đã xóa được dữ liệu");
           this.dialog.close()
-          this.snackBar.open("Đã xóa thành công", '', {
+          this.snackBar.open("Đã xóa thành công", 'OK', {
             duration: 2000
           })
         });

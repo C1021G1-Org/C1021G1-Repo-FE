@@ -12,7 +12,7 @@ import {EditCustomerComponent} from "./edit-customer/edit-customer.component";
 
 const routes: Routes = [
   {
-    path: 'api/customer', component: ListCustomerComponent
+    path: 'api-customer', component: ListCustomerComponent
   },
 
   {

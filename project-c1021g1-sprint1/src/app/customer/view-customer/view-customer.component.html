@@ -67,12 +67,8 @@
                     </tr>
                     <tr>
                       <th class="tieu-de">Giới tính: </th>
-                      <div *ngIf="customer.genderCustomer == true">
-                        <td>Nam</td>
-                      </div>
-                      <div *ngIf="customer.genderCustomer == false">
-                        <td>Nu</td>
-                      </div>
+
+                        <td>{{customer.genderCustomer ? "Nam 🙎‍♂" : customer.genderCustomer===null ? " Khác ⚧ " : "Nữ 🙎🏻‍♀"  }}</td>
                     </tr>
                     <tr>
                       <th class="tieu-de">Số điện thoại:</th>

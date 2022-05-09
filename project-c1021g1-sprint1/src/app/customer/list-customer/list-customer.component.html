@@ -21,7 +21,7 @@
                 <option value="name">Họ Tên</option>
                 <option value="email">Email</option>
                 <option value="address">Địa Chỉ</option>
-                <option value="country">Quốc Tịch</option>
+<!--                <option value="country">Quốc Tịch</option>-->
                 <option value="customerType">Loại Khách</option>
                 <option value="idCard">CMND/CCCD</option>
                 <option value="phone">Số Điện Thoại</option>
@@ -45,7 +45,7 @@
             </thead>
             <tbody>
             <tr>
-              <td><h6>Quản lý khách hàng <i class="fa fa-angle-down" style="font-size:24px"></i></h6></td>
+              <td routerLink="/api-customer" role="button"><h6>Quản lý khách hàng <i class="fa fa-angle-down" style="font-size:24px"  ></i></h6></td>
             </tr>
             <tr>
               <td><i class="fa fa-arrow-right" style="font-size:15px"></i>Thanh toán</td>
@@ -90,36 +90,35 @@
               <th scope="col">Giới Tính</th>
               <th scope="col">Ngày Sinh</th>
               <th scope="col">Email</th>
-              <th scope="col">Số CCCD</th>
+              <th scope="col">CMND/CCCD</th>
               <th scope="col" style=" width: 120px">Số ĐT</th>
               <th scope="col">Địa Chỉ</th>
-              <th scope="col">Quốc Tịch</th>
+
               <th scope="col">Loại Khách</th>
-              <th scope="col">Điểm</th>
+<!--              <th scope="col">Điểm</th>-->
               <th style="text-align: center">Thao tác</th>
 
             </tr>
             </thead>
             <tbody>
             <tr *ngFor="let customer of customerList, index as i">
-              <td scope="row" style="text-align: right">{{i + 1}}</td>
+              <td scope="col" style="text-align: right">{{i + 1}}</td>
               <td scope="col" style="text-align: left">{{customer.nameCustomer}}</td>
-              <td scope="col" style="text-align: left">{{customer.genderCustomer ? "Nam" : "Nữ"}}</td>
+              <td scope="col" style="text-align: left">{{customer.genderCustomer ? "Nam 🙎‍♂" : customer.genderCustomer===null ? " Khác ⚧ " : "Nữ 🙎🏻‍♀"  }}</td>
               <td scope="col" style="text-align: right">{{customer.birthdayCustomer | date: "dd-MM-yyyy"}}</td>
               <td scope="col" style="text-align: left">{{customer.emailCustomer}}</td>
               <td scope="col" style="text-align: left">{{customer.idCardCustomer}}</td>
               <td scope="col" style="text-align: right">{{customer.phoneCustomer}}</td>
               <td scope="col" style="text-align: left">{{customer.addressCustomer}}</td>
-              <td scope="col" style="text-align: left">{{customer.countries.country}}</td>
               <td scope="col" style="text-align: left">{{customer.customerType.nameCustomerType}}</td>
-              <td scope="col" style="text-align: right">{{customer.pointCustomer}}</td>
+<!--              <td scope="col" style="text-align: right">{{customer.pointCustomer}}</td>-->
               <td class="text-center ">
                 <div class="dropdown">
                   <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenuButton1"
                           data-toggle="dropdown" aria-expanded="false">
                   </button>
                   <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                    <a class="dropdown-item" [routerLink]="['/edit-customer',customer.id]">Sửa</a>
+                    <a class="dropdown-item" [routerLink]="['/edit-customer/',customer.id]">Sửa</a>
                     <a class="dropdown-item" (click)="openDialog(customer.id)">Xóa</a>
                   </div>
                 </div>
@@ -174,12 +173,9 @@
             </div>
           </div>
         </div>
-
-
       </div>
     </div>
   </div>
 </div>
-
 
 

@@ -66,8 +66,8 @@ export class EditCustomerComponent implements OnInit {
       birthdayCustomer: new FormControl('', Validators.required),
       idCardCustomer: new FormControl('', [Validators.required, Validators.pattern(/^[0-9]{10}$/)]),
       phoneCustomer: new FormControl('', [Validators.required, Validators.pattern(/^(0)(3[2-9]|5[6|8|9]|7[0|6-9]|8[0-6|8|9]|9[0-4|6-9])[0-9]{7}$/)]),
-      emailCustomer: new FormControl('', [Validators.required, Validators.email,Validators.maxLength(40)]),
-      addressCustomer: new FormControl('',[ Validators.required,Validators.minLength(5),Validators.maxLength(40)]),
+      emailCustomer: new FormControl('', [Validators.required, Validators.email, Validators.maxLength(40)]),
+      addressCustomer: new FormControl('', [Validators.required, Validators.minLength(5), Validators.maxLength(40)]),
       delFlagCustomer: new FormControl(''),
       pointCustomer: new FormControl(''),
       imageCustomer: new FormControl(''),
@@ -82,18 +82,17 @@ export class EditCustomerComponent implements OnInit {
         this.customerType = data2;
         this.customerService.finByIdCustomer(Number((this.active.snapshot.paramMap.get('id')))).subscribe(data3 => {
           this.customer.patchValue(data3);
-        },error => {
-          this.router.navigateByUrl('/list-customer');
+        }, error => {
+          this.router.navigateByUrl('/api-customer');
           this.snackBar.open('Lỗi hệ thống bị tấn công', 'Cảnh báo');
         });
       });
     });
   }
-
   update() {
     if (this.customer.valid) {
       this.customerService.updateCustomer(Number(this.active.snapshot.paramMap.get('id')), this.customer.value).subscribe(data => {
-        this.router.navigateByUrl('/list-customer');
+        this.router.navigateByUrl('/api-customer');
         this.snackBar.open('Đã cập nhật thành công', 'OK');
       }, error => {
         this.idCard = error.error.idCardCustomer
@@ -108,5 +107,4 @@ export class EditCustomerComponent implements OnInit {
     this.phone = ''
     this.emailValid = ''
   }
-
 }
