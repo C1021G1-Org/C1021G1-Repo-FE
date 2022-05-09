@@ -1,4 +1,4 @@
-export interface Airline {
+export interface AirlineType {
   id? : number,
   nameAirline? : string,
   priceAirline? : string,

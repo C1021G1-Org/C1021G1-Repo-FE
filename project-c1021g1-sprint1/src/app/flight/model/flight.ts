@@ -1,4 +1,4 @@
-import {Airline} from "./airline";
+import {AirlineType} from "./airline";
 
 export interface Flight {
   id? : number,
@@ -8,5 +8,5 @@ export interface Flight {
   dateStart? : string,
   dateEnd? : string,
   delFlagFlight? : boolean,
-  airlineType? : Airline
+  airlineType? : AirlineType
 }
