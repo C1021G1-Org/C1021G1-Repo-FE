@@ -1,1 +1,59 @@
-<p>header works!</p>
+<!--Navigation-->
+<nav class="navbar navbar-expand-md navbar-light bg-light">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-2">
+        <a class="navbar-brand col-3" routerLink="/home/">
+          <img src="/assets/image-layout/C1021G1_Airline_Logo-removebg-preview.png" class="logo"/>
+        </a>
+      </div>
+      <div class="col-5"></div>
+    </div>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarResponsive">
+      <div class="col-6"></div>
+      <div class="col-6">
+        <div class="row">
+          <div class="col-1"></div>
+          <div class="col-2"></div>
+          <div class="col-9">
+            <span>
+              <i class="fa fa-user-circle"></i>&nbsp;
+              <span class=" "><a style="color: white" >Đăng Ký &nbsp;</a></span>
+              <span style="color: white">|</span>
+              <span class=" "><a style="color: white" >&nbsp; Đăng Nhập &nbsp;</a></span>
+            </span>
+            <span>
+              <select class="custom-select">
+                <option>Tiếng Việt</option>
+                <option>English</option>
+                <option>日本語</option>
+                <option>ภาษาไทย</option>
+                <option>한국어 (o)</option>
+                <option>简体中文</option>
+                <option>繁體中文</option>
+              </select>
+            </span>
+          </div>
+        </div>
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link btn btn-outline-light border-0"  routerLink="/home/">TRANG CHỦ</a>
+            <!--            *ngIf="hidden"-->
+          </li>
+          <li class="nav-item">
+            <a class="nav-link btn btn-outline-light border-0" href="#">TIN TỨC</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link btn btn-outline-light border-0" routerLink="/home/checkin">CHECK-IN ONLINE</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link btn btn-outline-light border-0" routerLink="/home/baggage-regulation">QUY ĐỊNH HÀNH LÝ</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</nav>

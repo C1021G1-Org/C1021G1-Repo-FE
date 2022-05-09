@@ -1,4 +1,4 @@
-body {
+.container-fluid {
   font-family: Bahnschrift, sans-serif;
   z-index: -1;
 }
@@ -9,7 +9,11 @@ a {
 
 h1 {
   text-align: center;
-  color: white;
+}
+
+h6 {
+  float: right;
+  text-align: right;
 }
 
 .table-side-bar tbody tr:hover {
@@ -38,10 +42,7 @@ h1 {
 }
 
 #layout{
-  margin-top: 60px;
   padding: 20px;
-  background-image: url("https://balotrainghiem.com/wp-content/uploads/2017/05/DSC_3024.jpg");
-  background-size: 100%;
 }
 
 .table {
