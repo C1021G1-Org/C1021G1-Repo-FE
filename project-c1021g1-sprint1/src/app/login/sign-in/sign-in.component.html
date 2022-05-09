@@ -1,1 +1,69 @@
-<p>sign-in works!</p>
+
+
+      <form  (ngSubmit)="signIn()" [formGroup]="userForm" >
+
+        <div class = "container ">
+          <div class="row">
+            <div class="col-6 m-auto background">
+              <div class="d-flex justify-content-center">
+
+                <h1 class="mb-3">Đăng nhập</h1>
+<!--                <button style="background: transparent; border: none; padding: 0px"><i class="material-icons" style="font-size:36px;color:red">cancel</i></button>-->
+              </div>
+              <div class="mb-3">
+                <label class="required">Email<span class="text-danger">(*)</span>:</label>
+                <div class="input-group">
+                  <input type="text" formControlName="email" class="form-control" placeholder="Email" required=""><br>
+                </div>
+                <p style="color: red" *ngIf="emailNotExist &&!userForm.get('email').errors?.email &&userForm.get('email').value.length>0">Email không tồn tại.</p>
+                <p style="color: red" *ngIf="userForm.get('email').errors?.email">Trường này phải có định dạng Email.</p>
+              </div>
+              <div class="mb-3" >
+                <label class="required">Mật khẩu <span class="text-danger">(*)</span>:</label>
+                <div class="input-group">
+                  <input type="password" formControlName="password" class="form-control"  placeholder="Mật khẩu" >
+                </div>
+                <div *ngIf="checkPassword" style="color: red">
+                  Mật khẩu chưa đúng.
+                </div>
+              </div>
+              <hr class="mb-4">
+              <div class="mb-3 d-flex justify-content-between" >
+                <div class="form-group form-check">
+                  <label class="form-check-label">
+                    <input class="form-check-input" #rememberE value="remember" name="remember" type="checkbox"> Ghi nhớ đăng nhập.
+                  </label>
+                </div>
+                <div>
+                  <a href="#">Quên mật khẩu.</a>
+                </div>
+              </div>
+              <hr class="mb-4">
+              <div class="mb-3 d-flex justify-content-center" >
+                <button class="btn btn-primary" (click)="remember(rememberE)">Đăng nhập</button>
+              </div>
+              <hr class="mb-4">
+
+<!--              <div class="mb-3 d-flex justify-content-center align-items-center" >-->
+<!--                <button style="background: transparent; border: none; padding: 0px">-->
+<!--                  <img src="img/google-signin-button.png"  width="200"/>-->
+<!--                </button>-->
+
+<!--              </div>-->
+<!--              <div class="mb-3 d-flex justify-content-center align-items-center" >-->
+<!--                <button style="background: transparent; border: none; padding: 0px">-->
+<!--                  <img src="img/login-facebook.png"  width="200"/>-->
+<!--                </button>-->
+
+<!--              </div>-->
+            </div>
+
+<!--            <div class="col-6 pr-0">-->
+<!--              <img src="https://www.vietjetair.com/static/media/auth-img.bfdf06ab.png" width="100%" alt="">-->
+<!--            </div>-->
+          </div>
+        </div>
+      </form>
+<!--    </div>-->
+<!--  </div>-->
+<!--</div>-->

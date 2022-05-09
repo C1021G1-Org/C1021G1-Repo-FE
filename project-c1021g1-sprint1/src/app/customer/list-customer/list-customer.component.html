@@ -1,1 +1,181 @@
-<p>list-customer works!</p>
+<div class="container-fluid">
+  <div class="row">
+    <div class="container-fluid">
+      <h2 style="text-align: center">Quản Lý Khách Hàng</h2>
+<!--      <hr>-->
+      <div class="row">
+        <div class="col-2"></div>
+        <div class="col-10 d-flex justify-content-between">
+          <div>
+            <button class="btn btn-primary" routerLink="/create-customer"><i class="fa-solid fa-user-plus"
+                                                                             aria-hidden="true"></i></button>
+          </div>
+          <div>
+            <div class="input-group mb-3">
+              <div class="input-group-prepend">
+                <label class="input-group-text" style="margin-right: 5px" for="inputGroupSelect01">Tìm kiếm
+                  theo:</label>
+              </div>
+              <select #option class="custom-select col-3" id="inputGroupSelect01" style="margin-right: 5px">
+<!--                <option >-&#45;&#45;Chọn-&#45;&#45;</option>-->
+                <option value="name">Họ Tên</option>
+                <option value="email">Email</option>
+                <option value="address">Địa Chỉ</option>
+<!--                <option value="country">Quốc Tịch</option>-->
+                <option value="customerType">Loại Khách</option>
+                <option value="idCard">CMND/CCCD</option>
+                <option value="phone">Số Điện Thoại</option>
+              </select>
+              <input #keyword style="margin-right: 5px" type="text" class="form-control" placeholder="Nhập nội dung cần tìm">
+              <button class="btn btn-success"  type="submit"
+                      (click)="searchAll(option.value, keyword.value)">
+                <i class="fas fa-search" aria-hidden="true"></i></button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-2">
+          <table class="table table-striped table-bordered table-side-bar">
+            <thead class="table-dark ">
+            <tr>
+              <th>Chức Năng</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+              <td routerLink="/api-customer" role="button"><h6>Quản lý khách hàng <i class="fa fa-angle-down" style="font-size:24px"  ></i></h6></td>
+            </tr>
+            <tr>
+              <td><i class="fa fa-arrow-right" style="font-size:15px"></i>Thanh toán</td>
+            </tr>
+            <tr>
+              <td><i class="fa fa-arrow-right" style="font-size:15px"></i>Lịch sử giao dịch</td>
+            </tr>
+            <tr></tr>
+            <tr>
+              <td><h6>Quản trị viên <i class="fa fa-angle-down" style="font-size:24px"></i></h6></td>
+            </tr>
+            <tr>
+              <td><i class="fa fa-arrow-right" style="font-size:15px"></i>Thông tin admin</td>
+            </tr>
+<!--            <tr>-->
+<!--              <td><i class="fa fa-arrow-right" style="font-size:15px"></i>Quản lí nhân viên</td>-->
+<!--            </tr>-->
+            <tr></tr>
+
+            <tr>
+              <td><h6>Quản lí nhân viên <i class="fa fa-angle-down" style="font-size:24px"></i></h6></td>
+
+            </tr>
+            <tr>
+              <td><i class="fa fa-arrow-right" style="font-size:15px"></i>Quản lí bán vé</td>
+            </tr>
+            <tr>
+              <td><i class="fa fa-arrow-right" style="font-size:15px"></i>Đặt vé</td>
+            </tr>
+            <tr>
+              <td><i class="fa fa-arrow-right" style="font-size:15px"></i>Thống kê</td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="col-10">
+          <table class="table table-striped table-bordered">
+            <thead class="table-dark" [class.display]="checkNull">
+            <tr>
+              <th scope="col">STT</th>
+              <th scope="col" style=" width: 150px">Họ Tên</th>
+              <th scope="col">Giới Tính</th>
+              <th scope="col">Ngày Sinh</th>
+              <th scope="col">Email</th>
+              <th scope="col">CMND/CCCD</th>
+              <th scope="col" style=" width: 120px">Số ĐT</th>
+              <th scope="col">Địa Chỉ</th>
+
+              <th scope="col">Loại Khách</th>
+<!--              <th scope="col">Điểm</th>-->
+              <th style="text-align: center">Thao tác</th>
+
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let customer of customerList, index as i">
+              <td scope="col" style="text-align: right">{{i + 1}}</td>
+              <td scope="col" style="text-align: left">{{customer.nameCustomer}}</td>
+              <td scope="col" style="text-align: left">{{customer.genderCustomer ? "Nam 🙎‍♂" : customer.genderCustomer===null ? " Khác ⚧ " : "Nữ 🙎🏻‍♀"  }}</td>
+              <td scope="col" style="text-align: right">{{customer.birthdayCustomer | date: "dd-MM-yyyy"}}</td>
+              <td scope="col" style="text-align: left">{{customer.emailCustomer}}</td>
+              <td scope="col" style="text-align: left">{{customer.idCardCustomer}}</td>
+              <td scope="col" style="text-align: right">{{customer.phoneCustomer}}</td>
+              <td scope="col" style="text-align: left">{{customer.addressCustomer}}</td>
+              <td scope="col" style="text-align: left">{{customer.customerType.nameCustomerType}}</td>
+<!--              <td scope="col" style="text-align: right">{{customer.pointCustomer}}</td>-->
+              <td class="text-center ">
+                <div class="dropdown">
+                  <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenuButton1"
+                          data-toggle="dropdown" aria-expanded="false">
+                  </button>
+                  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    <a class="dropdown-item" [routerLink]="['/edit-customer/',customer.id]">Sửa</a>
+                    <a class="dropdown-item" (click)="openDialog(customer.id)">Xóa</a>
+                  </div>
+                </div>
+              </td>
+            </tr>
+            <tr [class.display]="!checkNull">
+              <td class="text-center" colspan="10"  style="font-size: 20px; text-align: center">Không tìm thấy nội dung</td>
+            </tr>
+            </tbody>
+          </table>
+          <!--    phân trang-->
+          <div class="mt-3" [class.display]="checkNull">
+            <div class="row d-flex justify-content-center">
+              <nav aria-label="Page navigation example">
+                <ul class="pagination">
+                  <li class="page-item">
+                    <a
+                      (click)="firstPage(option.value, keyword.value)"
+                      [class.disableButton]="indexPagination <= 0"
+                      class="page-link" style="color: black" aria-label="Firsts">
+                      <span aria-hidden="true">&laquo;</span>
+                    </a>
+                  </li>
+                  <li class="page-item">
+                    <a
+                       (click)="previousPage(option.value, keyword.value)"
+                       [class.disableButton]="indexPagination <= 0"
+                       class="page-link" style="color: black" aria-label="Previous">
+                      <span aria-hidden="true">&lt;</span>
+                    </a>
+                  </li>
+                  <li class="page-item"><a class="page-link" style="color: black">{{indexPagination + 1}}</a></li>
+                  <li class="page-item"><a class="page-link" style="color: black">/</a></li>
+                  <li class="page-item"><a class="page-link" style="color: black">{{totalPagination + 1}}</a></li>
+
+                  <li class="page-item">
+                    <a
+                      (click)="nextPage(option.value, keyword.value)" [class.disableButton]="indexPagination >= totalPagination"
+                      class="page-link" style="color: black" aria-label="Next">
+                      <span aria-hidden="true">&gt;</span>
+                    </a>
+                  </li>
+                  <li class="page-item">
+                    <a (click)="lastPage(option.value, keyword.value)"
+                       [class.disableButton]="indexPagination >= totalPagination"
+                       class="page-link" style="color: black" aria-label="LastPage">
+                      <span aria-hidden="true">&raquo;</span>
+                    </a>
+                  </li>
+                </ul>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+

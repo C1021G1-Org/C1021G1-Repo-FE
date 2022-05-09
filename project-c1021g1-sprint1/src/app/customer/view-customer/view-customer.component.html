@@ -1,1 +1,130 @@
-<p>view-customer works!</p>
+<section class="section1">
+  <div class="container-fluid" style="margin-top: 100px">
+    <div class="row" >
+      <div class="col-2">
+        <table class="table table1" style="background: white">
+          <thead class="table-dark">
+          <tr>
+            <th>
+              Chức Năng
+            </th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr>
+            <td>
+              <a href="">Thông tin cá nhân</a>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <a href="">Thanh toán</a>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <a href="">Lịch sử giao dịch</a>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <a href="">Đổi mật khẩu</a>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="col-10">
+        <div style="background-color: white">
+          <!--                table-striped-->
+          <table class="table table-bordered border-primary">
+            <thead class="table-dark">
+            <tr>
+              <th>Thông tin cá nhân</th>
+            </tr>
+            </thead>
+          </table>
+          <div style="background-color: white">
+            <div class="m-3">
+              <div class="row mb-2">
+                <div class="col-8">
+                  <table class="table table-bordered border-primary"  >
+                    <tr>
+                      <th  style="width: 170px;" class="tieu-de" >tên:</th>
+                      <td>{{customer.nameCustomer}}</td>
+                    </tr>
+                    <tr>
+                      <th class="tieu-de">Ngày sinh:</th>
+                      <td>{{customer.birthdayCustomer}}</td>
+                    </tr>
+                    <tr>
+                      <th class="tieu-de">Địa chỉ:</th>
+                      <td>{{customer.addressCustomer}}</td>
+                    </tr>
+                    <tr>
+                      <th class="tieu-de">Email:</th>
+                      <td>{{customer.emailCustomer}}</td>
+                    </tr>
+                    <tr>
+                      <th class="tieu-de">Giới tính: </th>
+
+                        <td>{{customer.genderCustomer ? "Nam 🙎‍♂" : customer.genderCustomer===null ? " Khác ⚧ " : "Nữ 🙎🏻‍♀"  }}</td>
+                    </tr>
+                    <tr>
+                      <th class="tieu-de">Số điện thoại:</th>
+                      <td>{{customer.phoneCustomer}}</td>
+                    </tr>
+                    <tr>
+                      <th class="tieu-de">Quốc tịch:</th>
+                      <td>{{customer.countries.country}}</td>
+                    </tr>
+                    <tr>
+                      <th class="tieu-de">Hộ chiếu/CMND:</th>
+                      <td>{{customer.idCardCustomer}}</td>
+                    </tr>
+                    <tr>
+                      <th class="tieu-de" >Xếp hạng</th>
+                      <td>{{customer.customerType.nameCustomerType}} <i class="fab fa-canadian-maple-leaf"></i></td>
+                    </tr>
+                    <tr>
+                      <th class="tieu-de">tổng điểm: </th>
+                      <td>{{customer.pointCustomer}}</td>
+                    </tr>
+                  </table>
+                </div>
+                <div class="col-4">
+                  <!--                            <div class="mb-2">-->
+                  <!--                                <img class="rounded mx-auto d-block avatar" src="img/100.webp" width="100" height="100" alt="dai-dien">-->
+                  <!--                            </div>-->
+                  <!--                                <div class="row">-->
+                  <!--                                    <a class="btn btn-warning" href="#" >Cập nhật thông tin</a>-->
+                  <!--                                </div>-->
+                  <div class="card" style="width: 18rem;">
+                    <img src="{{customer.imageCustomer}}" class="card-img-top" alt="avatar" width="250" height="250">
+                    <div class="card-body">
+                      <h5 class="card-title">Hình đại diện</h5>
+                      <!--                                    <p class="card-text">.</p>-->
+                      <table>
+                        <tr>
+                          <th  style="width: 50px;" class="tieu-de" >tên:</th>
+                          <td>{{customer.nameCustomer}}</td>
+                        </tr>
+                        <tr>
+                          <th  style="width: 50px;" class="tieu-de" > Xếp Hạng:</th>
+                          <td>{{customer.customerType.nameCustomerType}}</td>
+                        </tr>
+                      </table>
+                      <div class="" style="text-align: center">
+                        <a href="#" [routerLink]="['/edit-personal/', customer.id]" class="btn btn-primary mt-3 ">Chỉnh sửa thông tin</a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

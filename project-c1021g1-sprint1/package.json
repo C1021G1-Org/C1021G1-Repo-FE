@@ -16,19 +16,18 @@
     "@angular/common": "~9.1.13",
     "@angular/compiler": "~9.1.13",
     "@angular/core": "~9.1.13",
+    "@angular/fire": "^6.1.4",
     "@angular/forms": "~9.1.13",
     "@angular/material": "^9.2.4",
     "@angular/platform-browser": "~9.1.13",
     "@angular/platform-browser-dynamic": "~9.1.13",
     "@angular/router": "~9.1.13",
     "bootstrap": "^4.6.1",
-<<<<<<< HEAD
+    "firebase": "^8.4.2",
     "jquery": "^3.6.0",
-=======
-    "font-awesome": "^4.7.0",
->>>>>>> customer-management
     "json-server": "^0.17.0",
     "ngx-pagination": "^5.1.1",
+    "ngx-toastr": "^13.2.0",
     "rxjs": "~6.5.4",
     "tslib": "^1.10.0",
     "zone.js": "~0.10.2"

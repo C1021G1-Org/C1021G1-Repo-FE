@@ -1,1 +1,230 @@
-<p>edit-customer-by-employee works!</p>
+<section class="section1">
+  <div class="container-fluid " style="margin-top: 100px">
+    <div class="row">
+      <div class="col-2" style="border: black">
+        <table class="table table1" style="background: white ">
+          <thead class="table-dark">
+          <tr>
+            <th>
+              Chức Năng
+            </th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr>
+            <td>
+              <a href="">Thông tin cá nhân</a>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <a href="">Thanh toán</a>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <a href="">Lịch sử giao dịch</a>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <a href="">Đổi mật khẩu</a>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+      <!--    //ThangDBX phong nen cua form-->
+      <div class="col-10" >
+        <div style="background-color: white">
+          <table class="table table-striped table-bordered">
+            <thead class="table-dark">
+            <tr>
+              <th style="text-transform: capitalize">Chỉnh sửa thông tin cá nhân</th>
+            </tr>
+            </thead>
+          </table>
+          <div style="background-color: white" >
+            <!--         ThangDBX form-->
+            <form [formGroup]="customerForm" (ngSubmit)="update()" class="needs-validation was-validated" novalidate="">
+              <input type="hidden" formControlName="id">
+              <div class="row">
+                <div class="col-md-6 mb-3">
+                  <label for="username">Họ và tên <span class="text-danger">(*)</span>:</label>
+                  <div class="input-group">
+                    <input type="text" class="form-control" id="username" placeholder="Nhập tên"
+                           formControlName="nameCustomer" required>
+                  </div>
+                  <div class="text-danger" *ngFor="let validation of validation_messages.nameCustomer">
+                    <div class="valid"
+                         *ngIf="customerForm.get('nameCustomer').hasError(validation.type) && (customerForm.get('nameCustomer').pristine || customerForm.get('nameCustomer').touched)">
+                      {{validation.message}}</div>
+                  </div>
+                </div>
+              </div>
+              <!--imge-->
+              <div class="row">
+                <div class="mb-3">
+                  <div class="col-lg-6">
+                    <div class="card" style="width: 18rem;">
+                      <img [src]="imagePersonal"   class="card-img-top" alt="..." width="250" height="250">
+                      <div class="card-body">
+                        <p class="card-text"> Ảnh đại diện</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-lg-6">
+                    <label for="fileupload">Cập nhật hình ảnh <span class="text-danger">(*)</span>:</label>
+                    <div class="input-group">
+                      <input type="file" class="form-control" id="fileupload" placeholder="Cập nhật hình ảnh" required=""
+                             (change)="showPreview($event)"
+                      >
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="d-block my-3 d-flex ">
+                <label>Giới tính <span class="text-danger">(*)</span>: </label>
+                <div class="custom-control custom-radio  mx-2 ">
+                  <mat-radio-group formControlName="genderCustomer">
+                    <mat-radio-button [value]='true' class="mx-2">Nam 🙎‍♂</mat-radio-button>
+                    <mat-radio-button [value]='false' class="mx-2">Nữ 🙎🏻‍♀</mat-radio-button>
+                    <mat-radio-button [value]='null' class="mx-2">Khác ⚧</mat-radio-button>
+                  </mat-radio-group>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-6 mb-3">
+                  <label for="Name">Điện Thoại <span class="text-danger">(*)</span>: </label>
+                  <input type="text" class="form-control" id="Name" placeholder="Nhập số điện thoại"
+                         formControlName="phoneCustomer"
+                         required="">
+                  <div class="text-danger" *ngFor="let validation of validation_messages.phoneCustomer">
+                    <div class="valid"
+                         *ngIf="customerForm.get('phoneCustomer').hasError(validation.type) && (customerForm.get('phoneCustomer').pristine || customerForm.get('phoneCustomer').touched)">
+                      {{validation.message}}</div>
+                  </div>
+                </div>
+                <div class="col-md-6 mb-3">
+                  <label for="lastName">Ngày sinh <span class="text-danger">(*)</span>:</label>
+                  <!--                  <span *ngIf="customerForm.get('birthdayCustomer').hasError('required')" class="validator float-right">-->
+                  <!--                            {{validation.message}}-->
+                  <!--                </span>-->
+                  <input type="date" class="form-control" id="lastName" placeholder="" required=""
+                         formControlName="birthdayCustomer">
+                  <div class="text-danger" *ngFor="let validation of validation_messages.birthdayCustomer">
+                    <div class="valid"
+                         *ngIf="customerForm.get('birthdayCustomer').hasError(validation.type) && (customerForm.get('birthdayCustomer').dirty || customerForm.get('birthdayCustomer').touched)">
+                      {{validation.message}}</div>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-6 mb-3">
+                  <label for="address">Địa chỉ <span class="text-danger">(*)</span>: </label>
+                  <input type="text" class="form-control" id="address" placeholder="Nhập địa chỉ" required=""
+                         formControlName="addressCustomer">
+                  <span *ngIf="customerForm.get('addressCustomer').hasError('required')
+               && (customerForm.get('addressCustomer').pristine || customerForm.get('addressCustomer').touched)"
+                        class="validator">
+               Vui lòng nhập địa chỉ!
+                </span>
+                </div>
+                <div class="col-md-6 mb-3">
+                  <label for="last">CMND - Passport <span class="text-danger">(*)</span>:</label>
+                  <input type="text" class="form-control" id="last" placeholder="Nhập CMND" value="" required=""
+                         formControlName="idCardCustomer">
+                  <div class="text-danger" *ngFor="let validation of validation_messages.idCardCustomer">
+                    <div class="valid"
+                         *ngIf="customerForm.get('idCardCustomer').hasError(validation.type) && (customerForm.get('idCardCustomer').dirty || customerForm.get('idCardCustomer').touched)">
+                      {{validation.message}}</div>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-6 mb-3">
+                  <label for="firstName">Email <span class="text-danger">(*)</span>: </label>
+                  <input type="text" class="form-control" id="firstName" placeholder="abc@gmail.com"
+                         formControlName="emailCustomer"
+                         required="">
+                  <div class="text-danger" *ngFor="let validation of validation_messages.emailCustomer">
+                    <div class="valid"
+                         *ngIf="customerForm.get('emailCustomer').hasError(validation.type) && (customerForm.get('emailCustomer').dirty || customerForm.get('emailCustomer').touched)">
+                      {{validation.message}}</div>
+                  </div>
+                </div>
+                <div class="col-md-6 mb-3">
+                  <label for="country">Quốc tịch <span class="text-danger">(*)</span>:</label>
+                  <select class="form-control" id="country" formControlName="countries">
+                    <option *ngFor="let type of country" [ngValue]="type.id" [selected]="type.id==customerForm.get('countries').value.id">
+                      {{type.country}}</option>
+                  </select>
+                  <div class="text-danger" *ngFor="let validation of validation_messages.emailCustomer">
+                    <div class="valid"
+                         *ngIf="customerForm.get('countries').hasError(validation.type) && (customerForm.get('countries').dirty || customerForm.get('countries').touched)">
+                      {{validation.message}}</div>
+                  </div>
+                </div>
+              </div>
+              <!--            <div class="d-grid m-2 d-md-flex justify-content-md-center">-->
+              <!--              <div class="m-2">-->
+              <!--                <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#exampleModal">Trở về-->
+              <!--                </button>-->
+              <!--              </div>-->
+              <!--              <div class="m-2">-->
+              <!--                <button class="btn btn-danger" type="submit" [disabled]="customerForm.invalid">-->
+              <!--                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"-->
+              <!--                       class="bi bi-pencil-fill" viewBox="0 0 16 16">-->
+              <!--                    <path-->
+              <!--                      d="M12.854.146a.5.5 0 0 0-.707 0L10.5 1.793 14.207 5.5l1.647-1.646a.5.5 0 0 0 0-.708l-3-3zm.646 6.061L9.793 2.5 3.293 9H3.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.207l6.5-6.5zm-7.468 7.468A.5.5 0 0 1 6 13.5V13h-.5a.5.5 0 0 1-.5-.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.5-.5V10h-.5a.499.499 0 0 1-.175-.032l-.179.178a.5.5 0 0 0-.11.168l-2 5a.5.5 0 0 0 .65.65l5-2a.5.5 0 0 0 .168-.11l.178-.178z"/>-->
+              <!--                  </svg>-->
+              <!--                  Cập nhật-->
+              <!--                </button>-->
+              <!--              </div>-->
+              <!--            </div>-->
+              <div class="d-grid m-2 d-md-flex justify-content-md-center">
+                <div class="m-2">
+                  <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#exampleModal" (click)="back()">Trở về
+                  </button>
+                </div>
+                <div class="m-2">
+                  <button class="btn btn-danger" type="submit" [disabled]="customerForm.invalid">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                         class="bi bi-pencil-fill" viewBox="0 0 16 16">
+                      <path
+                        d="M12.854.146a.5.5 0 0 0-.707 0L10.5 1.793 14.207 5.5l1.647-1.646a.5.5 0 0 0 0-.708l-3-3zm.646 6.061L9.793 2.5 3.293 9H3.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.207l6.5-6.5zm-7.468 7.468A.5.5 0 0 1 6 13.5V13h-.5a.5.5 0 0 1-.5-.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.5-.5V10h-.5a.499.499 0 0 1-.175-.032l-.179.178a.5.5 0 0 0-.11.168l-2 5a.5.5 0 0 0 .65.65l5-2a.5.5 0 0 0 .168-.11l.178-.178z"/>
+                    </svg>
+                    Cập nhật
+                  </button>
+                </div>
+              </div>
+              <br>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Xác nhận hủy</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        Bạn có chắc chắn muốn trở lại không?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Không</button>
+        <button type="button" class="btn btn-danger" >Có</button>
+      </div>
+    </div>
+  </div>
+</div>
+

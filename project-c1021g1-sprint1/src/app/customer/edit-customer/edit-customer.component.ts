@@ -83,17 +83,16 @@ export class EditCustomerComponent implements OnInit {
         this.customerService.finByIdCustomer(Number((this.active.snapshot.paramMap.get('id')))).subscribe(data3 => {
           this.customer.patchValue(data3);
         }, error => {
-          this.router.navigateByUrl('/list-customer');
+          this.router.navigateByUrl('/api-customer');
           this.snackBar.open('Lỗi hệ thống bị tấn công', 'Cảnh báo');
         });
       });
     });
   }
-
   update() {
     if (this.customer.valid) {
       this.customerService.updateCustomer(Number(this.active.snapshot.paramMap.get('id')), this.customer.value).subscribe(data => {
-        this.router.navigateByUrl('/list-customer');
+        this.router.navigateByUrl('/api-customer');
         this.snackBar.open('Đã cập nhật thành công', 'OK');
       }, error => {
         this.idCard = error.error.idCardCustomer
@@ -103,11 +102,9 @@ export class EditCustomerComponent implements OnInit {
       });
     }
   }
-
   isEmpty() {
     this.idCard = ''
     this.phone = ''
     this.emailValid = ''
   }
-
 }
