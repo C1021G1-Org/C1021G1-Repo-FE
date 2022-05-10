@@ -20,7 +20,6 @@ import {NgxPaginationModule} from "ngx-pagination";
 import {CdkTableModule} from "@angular/cdk/table";
 import {TicketModule} from "./ticket/ticket.module";
 import {MatSortModule} from "@angular/material/sort";
-
 import {NewsModule} from "./news/news.module";
 import {environment} from "../environments/environment";
 import {AngularFireModule} from '@angular/fire';
@@ -28,9 +27,7 @@ import {ToastrModule} from "ngx-toastr";
 import {MatProgressBarModule} from '@angular/material/progress-bar';
 import {ngxLoadingAnimationTypes, NgxLoadingModule} from "ngx-loading";
 import {MatDialog, MatDialogModule} from "@angular/material/dialog";
-
-
-
+import {PhonePipe} from "./employee/phone.pipe";
 
 
 @NgModule({
@@ -41,6 +38,7 @@ import {MatDialog, MatDialogModule} from "@angular/material/dialog";
     BodyComponent,
     SignUpComponent,
     SignInComponent,
+    PhonePipe
 
   ],
   imports: [
@@ -77,6 +75,9 @@ import {MatDialog, MatDialogModule} from "@angular/material/dialog";
     MatDialogModule,
     MatSnackBarModule,
 
+  ],
+  exports: [
+    PhonePipe
   ],
   bootstrap: [AppComponent]
 })
