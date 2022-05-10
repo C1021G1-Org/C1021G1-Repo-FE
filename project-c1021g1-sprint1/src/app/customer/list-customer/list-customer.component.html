@@ -23,7 +23,7 @@
                 <option value="address">Địa Chỉ</option>
 <!--                <option value="country">Quốc Tịch</option>-->
                 <option value="customerType">Loại Khách</option>
-                <option value="idCard">CMND/CCCD</option>
+<!--                <option value="idCard">CMND/CCCD</option>-->
                 <option value="phone">Số Điện Thoại</option>
               </select>
               <input #keyword style="margin-right: 5px" type="text" class="form-control" placeholder="Nhập nội dung cần tìm">
@@ -90,7 +90,7 @@
               <th scope="col">Giới Tính</th>
               <th scope="col">Ngày Sinh</th>
               <th scope="col">Email</th>
-              <th scope="col">CMND/CCCD</th>
+<!--              <th scope="col">CMND/CCCD</th>-->
               <th scope="col" style=" width: 120px">Số ĐT</th>
               <th scope="col">Địa Chỉ</th>
 
@@ -104,10 +104,10 @@
             <tr *ngFor="let customer of customerList, index as i">
               <td scope="col" style="text-align: right">{{i + 1}}</td>
               <td scope="col" style="text-align: left">{{customer.nameCustomer}}</td>
-              <td scope="col" style="text-align: left">{{customer.genderCustomer ? "Nam 🙎‍♂" : customer.genderCustomer===null ? " Khác ⚧ " : "Nữ 🙎🏻‍♀"  }}</td>
+              <td scope="col" style="text-align: left">{{customer.genderCustomer ? "Nam " : customer.genderCustomer===null ? " Khác " : "Nữ‍"  }}</td>
               <td scope="col" style="text-align: right">{{customer.birthdayCustomer | date: "dd-MM-yyyy"}}</td>
               <td scope="col" style="text-align: left">{{customer.emailCustomer}}</td>
-              <td scope="col" style="text-align: left">{{customer.idCardCustomer}}</td>
+<!--              <td scope="col" style="text-align: left">{{customer.idCardCustomer}}</td>-->
               <td scope="col" style="text-align: right">{{customer.phoneCustomer}}</td>
               <td scope="col" style="text-align: left">{{customer.addressCustomer}}</td>
               <td scope="col" style="text-align: left">{{customer.customerType.nameCustomerType}}</td>

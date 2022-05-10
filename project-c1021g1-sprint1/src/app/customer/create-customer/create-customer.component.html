@@ -1,7 +1,7 @@
 <section class=" section1 ">
   <div class="container-fluid" style="background: rgba(255, 255, 255,0.8)">
     <div class="row">
-      <div class="col-md-2 " style="margin-top: 80px;">
+      <div class="col-md-2 " >
 
         <table class="table table-striped table-bordered table-side-bar" style="background: rgba(255, 255, 255,1)">
           <thead class="table-dark ">
@@ -49,19 +49,18 @@
 
       </div>
 
-      <div class="col-md-6 order-md-1" style="margin-top: 80px ">
+      <div class="col-md-6 order-md-1" >
         <h4 class="mb-3 text-muted">Thêm Mới Khách Hàng</h4>
 
 
-        <form [formGroup]="customer" (ngSubmit)="save()" class="needs-validation was-validated" novalidate="">
-
+        <form [formGroup]="customer" (ngSubmit)="save()" class="needs-validation was-validated" novalidate>
 
           <div class="row">
             <div class="col-md-6 mb-3">
               <label for="username">Họ và tên <span class="text-danger">(*)</span>:</label>
               <div class="input-group">
-                <input type="text" class="form-control" id="username" placeholder="Nhập tên"
-                       formControlName="nameCustomer" required>
+                <input type="text" class="form-control " id="username" placeholder="Nguyễn Văn A"
+                       formControlName="nameCustomer" required="">
               </div>
               <div class="text-danger" *ngFor="let validation of validation_messages.nameCustomer">
                 <div class="valid"
@@ -104,7 +103,7 @@
           <div class="row">
             <div class="col-md-6 mb-3">
               <label for="Name">Điện Thoại <span class="text-danger">(*)</span>: </label>
-              <input type="text" class="form-control" id="Name" placeholder="Nhập số điện thoại"
+              <input type="text" class="form-control" id="Name" placeholder="03xxxxxxxx"
                      formControlName="phoneCustomer"
                      required="" (click)="isEmpty()">
 
@@ -125,13 +124,18 @@
                 </span>
               <input type="date" class="form-control" id="lastName" placeholder="" required=""
                      formControlName="birthdayCustomer">
+              <div class="text-danger" *ngFor="let validation of validation_messages.birthdayCustomer">
+                <div class="valid"
+                     *ngIf="customer.get('birthdayCustomer').hasError(validation.type) && (customer.get('birthdayCustomer').dirty || customer.get('birthdayCustomer').touched)">
+                  {{validation.message}}</div>
+              </div>
             </div>
           </div>
 
           <div class="row">
             <div class="col-md-6 mb-3">
               <label for="address">Địa chỉ <span class="text-danger">(*)</span>: </label>
-              <input type="text" class="form-control" id="address" placeholder="Nhập địa chỉ" required=""
+              <input type="text" class="form-control" id="address" placeholder="364 Lê Duẩn ,Hải Châu,Đà Nẵng" required=""
                      formControlName="addressCustomer">
               <div class="text-danger" *ngFor="let validation of validation_messages.address">
                 <div class="valid"
@@ -141,7 +145,7 @@
             </div>
             <div class="col-md-6 mb-3">
               <label for="last">CMND - Passport <span class="text-danger">(*)</span>:</label>
-              <input type="text" class="form-control" id="last" placeholder="Nhập CMND" value="" required=""
+              <input type="text" class="form-control" id="last" placeholder="79xxxxxxxx hoặc 69xxxxxxxxxx" value="" required=""
                      formControlName="idCardCustomer" (click)="isEmpty()">
               <div class="text-danger" *ngFor="let validation of validation_messages.idCardCustomer">
                 <div class="valid"
@@ -178,14 +182,11 @@
                 </span>
             </div>
           </div>
-          <br>
-
           <div class="row">
             <div class="col-md-12  justify-content-md-center d-flex">
               <button type="button" class="btn btn-secondary mx-md-3" data-toggle="modal" data-target="#exampleModal">
                 Trở về
               </button>
-
               <button type="submit" class="btn btn-primary mx-md-3" [disabled]="customer.invalid">Lưu lại</button>
             </div>
           </div>
@@ -193,7 +194,7 @@
         </form>
       </div>
 
-      <div class="col-md-4 order-md-2 mb-4" style="margin-top: 80px">
+      <div class="col-md-4 order-md-2 mb-4"   >
         <div class="col-md-12">
 
           <h4 class="d-flex justify-content-between align-items-center mb-3">
@@ -207,7 +208,7 @@
               <div>
                 <h6 class="my-0">Đà Nẵng --> Hồ Chí Minh</h6>
                 <small class="text-muted">18h --> 19h</small>
-                <small class="text-muted">26/04/2022</small>
+                <small class="text-muted">  09/05/2022</small>
               </div>
 
               <span class="text-muted">2.700.000 vnđ</span>
@@ -216,7 +217,7 @@
               <div>
                 <h6 class="my-0">Đà Nẵng --> Hà Nội</h6>
                 <small class="text-muted">19h --> 20h</small>
-                <small class="text-muted">26/04/202</small>
+                <small class="text-muted">  09/05/202</small>
               </div>
               <span class="text-muted">2.700.000 vnđ</span>
             </li>
@@ -224,12 +225,27 @@
               <div>
                 <h6 class="my-0">Đà Nẵng --> Cần Thơ</h6>
                 <small class="text-muted">20h --> 21h</small>
+                <small class="text-muted">  09/05/202</small>
               </div>
               <span class="text-muted">1.200.000 vnđ</span>
             </li>
             <li class="list-group-item d-flex justify-content-between bg-light">
               <div class="text-success">
                 <h6 class="my-0">Đà Nẵng --> TP.Vinh</h6>
+                <small>Đang thực hiện...</small>
+              </div>
+              <span class="text-success">Đang bay...</span>
+            </li>
+            <li class="list-group-item d-flex justify-content-between bg-light">
+              <div class="text-success">
+                <h6 class="my-0">Đà Nẵng --> TP.Vũng Tàu</h6>
+                <small>Đang thực hiện...</small>
+              </div>
+              <span class="text-success">Đang bay...</span>
+            </li>
+            <li class="list-group-item d-flex justify-content-between bg-light">
+              <div class="text-success">
+                <h6 class="my-0">Đà Nẵng --> TP.Nha Trang</h6>
                 <small>Đang thực hiện...</small>
               </div>
               <span class="text-success">Đang bay...</span>
