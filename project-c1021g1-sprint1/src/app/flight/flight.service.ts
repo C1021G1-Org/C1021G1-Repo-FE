@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders} from "@angular/common/http";
-import {Observable} from "rxjs";
 import {AirlineType} from "./model/airline";
 import {Flight} from "./model/flight";
 import {FlightDto} from "./dto/flight-dto";
