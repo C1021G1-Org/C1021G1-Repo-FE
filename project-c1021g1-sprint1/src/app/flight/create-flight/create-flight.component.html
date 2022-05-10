@@ -12,44 +12,13 @@
         </thead>
         <tbody>
         <tr>
-          <th><h6>Quản lý khách hàng <i class="fa fa-angle-down" style="font-size:24px"></i></h6></th>
+          <td><a href="">Thông tin admin</a></td>
         </tr>
         <tr>
-          <td><i class="fa fa-arrow-right" style="font-size:15px"></i>Thanh toán</td>
+          <td><a href="">Quản lí chuyến bay</a></td>
         </tr>
         <tr>
-          <td><i class="fa fa-arrow-right" style="font-size:15px"></i>Lịch sử giao dịch</td>
-        </tr>
-        <tr></tr>
-        <tr>
-          <th><h6>Quản trị viên <i class="fa fa-angle-down" style="font-size:24px"></i></h6></th>
-        </tr>
-        <tr>
-          <td><i class="fa fa-arrow-right" style="font-size:15px"></i>Thông tin admin</td>
-        </tr>
-        <tr>
-          <td><i class="fa fa-arrow-right" style="font-size:15px"></i>Quản lí nhân viên</td>
-        </tr>
-        <tr></tr>
-
-        <tr>
-          <th><h6>Quản lí nhân viên <i class="fa fa-angle-down" style="font-size:24px"></i></h6></th>
-
-        </tr>
-        <tr>
-          <td><i class="fa fa-arrow-right" style="font-size:15px"></i>Quản lí khách hàng</td>
-        </tr>
-        <tr>
-          <td><i class="fa fa-arrow-right" style="font-size:15px"></i>Quản lí bán vé</td>
-        </tr>
-        <tr>
-          <td><i class="fa fa-arrow-right" style="font-size:15px"></i>Quản lí Chuyến bay</td>
-        </tr>
-        <tr>
-          <td><i class="fa fa-arrow-right" style="font-size:15px"></i>Đặt vé</td>
-        </tr>
-        <tr>
-          <td><i class="fa fa-arrow-right" style="font-size:15px"></i>Thống kê</td>
+          <td><a href="">Thống kê</a></td>
         </tr>
         </tbody>
       </table>
@@ -84,7 +53,7 @@
                 <label >Mã chuyến bay <span class="text-danger">(*)</span>:</label>
                 <div class="input-group">
                   <input type="text" class="form-control" name="codeFlight"
-                         formControlName="codeFlight" placeholder="Mã chuyến bay" (click)="validateCodeFlight()">
+                         formControlName="codeFlight" placeholder="([VJ|VN|BB|JT]XXXX) trong đó X là số từ (0-9)" (click)="validateCodeFlight()">
                 </div>
                 <div style="color: red">{{this.codeFlightError}}</div>
                 <div style="color: red"  role = "alert"
@@ -228,13 +197,18 @@
                       createFlightForm.get('dateEnd').touched">
                   Không được để trống nha!
                 </div>
+                <div style="color: red"
+                     *ngIf ="createFlightForm.hasError('checkDate') &&
+                      createFlightForm.get('dateEnd').touched">
+                  Ngày bay không được bằng hoặc nhỏ hơn ngày hạ cánh!
+                </div>
               </div>
             </div>
             <hr class="mb-4">
           <div class="row">
             <div class="col mb-3">
               <div style="float: right">
-                <a class=" btn btn-dark" type="button">Trở về</a>
+                <a class=" btn btn-dark" type="button" routerLink="/flight">Trở về</a>
               </div>
             </div>
             <div class="col mb-3">

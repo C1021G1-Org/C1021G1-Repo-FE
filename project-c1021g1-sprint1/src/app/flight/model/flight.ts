@@ -9,4 +9,6 @@ export interface Flight {
   dateEnd? : string,
   delFlagFlight? : boolean,
   airlineType? : AirlineType
+
+
 }
