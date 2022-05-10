@@ -50,7 +50,7 @@ export class EditFlightComponent implements OnInit {
     dateStart: new FormControl('', Validators.required),
     dateEnd: new FormControl('', Validators.required),
     airlineType: new FormControl('', Validators.required)
-  }, {validators: this.duplicate})
+  }, {validators: [this.duplicate, this.checkDate]})
 
   getAirlineType() {
     this.flightService.getAirlineType().subscribe(data => {
@@ -74,6 +74,16 @@ export class EditFlightComponent implements OnInit {
     const t = control.get('toFlight').value;
     return f != t ? null : {
       'checkDuplicate': true
+    };
+  }
+
+  checkDate(control: AbstractControl) {
+    const dateStart = control.get('dateStart').value;
+    const dateEnd = control.get('dateEnd').value;
+    const checkDateStart = new Date(dateStart);
+    const checkDateEnd = new Date(dateEnd);
+    return checkDateStart < checkDateEnd ? null : {
+      'checkDate': true
     };
   }
 }
