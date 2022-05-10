@@ -5,6 +5,7 @@ import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 import {CustomerService} from "../customer.service";
 import {MatSnackBar} from "@angular/material/snack-bar";
 import {ActivatedRoute, Router} from "@angular/router";
+import {DateValidator} from "../create-customer/create-customer.component";
 
 
 @Component({
@@ -32,7 +33,7 @@ export class EditCustomerComponent implements OnInit {
     ],
     phoneCustomer: [
       {type: 'required', message: 'Vui lòng nhập số điện thoại!'},
-      {type: 'pattern', message: 'Vui lòng nhập số địa thoại đúng định dạng 090xxxxxxx hoặc 091xxxxxxx'}
+      {type: 'pattern', message: 'Vui lòng nhập số địa thoại đúng định dạng 09xxxxxxxx hoặc 08xxxxxxxx hoặc 07xxxxxxxx hoặc 03xxxxxxxx'}
     ],
     idCardCustomer: [
       {type: 'required', message: 'Vui lòng nhập CMND!'},
@@ -44,6 +45,10 @@ export class EditCustomerComponent implements OnInit {
     customerType: [
       {type: 'required', message: 'Vui lòng chọn loại khách hàng!'},
     ],
+    birthdayCustomer: [
+      {type: 'dateValid', message: 'Vui lòng chọn ngày sinh bé hơn ngày hiện tại!'},
+      {type: 'checkAge', message: 'Vui lòng chọn ngày sinh 6 tháng tuổi trở lên và bé hơn 100 tuổi!'},
+    ],
     address: [
       {type: 'required', message: 'Vui lòng nhập địa chỉ!'},
       {type: 'minlength', message: 'Vui lòng trên 5 kí tự!'},
@@ -54,7 +59,7 @@ export class EditCustomerComponent implements OnInit {
 
   constructor(private customerService: CustomerService,
               private snackBar: MatSnackBar,
-              private router: Router, private active: ActivatedRoute, private formBuilder: FormBuilder) {
+              private router: Router, private active: ActivatedRoute) {
   }
 
 
@@ -63,11 +68,11 @@ export class EditCustomerComponent implements OnInit {
       id: new FormControl(''),
       nameCustomer: new FormControl('', [Validators.required, Validators.pattern(/^[a-zA-Z\'-\'\\sáàảãạăâắằấầặẵẫậéèẻ ẽẹếềểễệóêòỏõọôốồổỗộ ơớờởỡợíìỉĩịđùúủũụưứ� �ửữựÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚĂĐĨŨƠ ƯĂẠẢẤẦẨẪẬẮẰẲẴẶẸẺẼ� ��ỀỂỄỆỈỊỌỎỐỒỔỖỘỚỜỞ ỠỢỤỨỪỬỮỰỲỴýÝỶỸửữựỵ ỷỹ]*$/), Validators.maxLength(40)]),
       genderCustomer: new FormControl('',),
-      birthdayCustomer: new FormControl('', Validators.required),
-      idCardCustomer: new FormControl('', [Validators.required, Validators.pattern(/^[0-9]{10}$/)]),
-      phoneCustomer: new FormControl('', [Validators.required, Validators.pattern(/^(0)(3[2-9]|5[6|8|9]|7[0|6-9]|8[0-6|8|9]|9[0-4|6-9])[0-9]{7}$/)]),
-      emailCustomer: new FormControl('', [Validators.required, Validators.email, Validators.maxLength(40)]),
-      addressCustomer: new FormControl('', [Validators.required, Validators.minLength(5), Validators.maxLength(40)]),
+      birthdayCustomer: new FormControl('', [Validators.required, DateValidator]),
+      idCardCustomer: new FormControl('', [Validators.required, Validators.pattern(/^([0-9]{10})$|([0-9]{12})$/)]),
+      phoneCustomer: new FormControl('', [Validators.required, Validators.pattern(/^((03)|(08)|(07)|(09))([0-9]){8}$/)]),
+      emailCustomer: new FormControl('', [Validators.required, Validators.email,Validators.maxLength(40)]),
+      addressCustomer: new FormControl('',[ Validators.required,Validators.minLength(5),Validators.maxLength(100)]),
       delFlagCustomer: new FormControl(''),
       pointCustomer: new FormControl(''),
       imageCustomer: new FormControl(''),
@@ -84,7 +89,7 @@ export class EditCustomerComponent implements OnInit {
           this.customer.patchValue(data3);
         }, error => {
           this.router.navigateByUrl('/api-customer');
-          this.snackBar.open('Lỗi hệ thống bị tấn công', 'Cảnh báo');
+          this.snackBar.open('Lỗi hệ thống bị tấn công', 'Cảnh báo',{duration:2000});
         });
       });
     });
@@ -92,13 +97,14 @@ export class EditCustomerComponent implements OnInit {
   update() {
     if (this.customer.valid) {
       this.customerService.updateCustomer(Number(this.active.snapshot.paramMap.get('id')), this.customer.value).subscribe(data => {
+        console.log(data)
         this.router.navigateByUrl('/api-customer');
-        this.snackBar.open('Đã cập nhật thành công', 'OK');
+        this.snackBar.open('Đã cập nhật thành công', 'OK',{duration:2000});
       }, error => {
         this.idCard = error.error.idCardCustomer
         this.phone = error.error.phoneCustomer
         this.emailValid = error.error.emailCustomer
-        this.snackBar.open('Dữ liệu đang bị lỗi', 'OK');
+        this.snackBar.open('Dữ liệu đang bị lỗi', 'OK',{duration:2000});
       });
     }
   }

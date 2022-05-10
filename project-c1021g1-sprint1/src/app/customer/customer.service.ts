@@ -1,5 +1,4 @@
-
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {ICustomer} from "./model/ICustomer";
@@ -28,30 +27,35 @@ export class CustomerService {
 
   constructor(private httpClient: HttpClient) {
   }
+
   //LongLT lấy list customer
   getAllCustomer(index: number) {
-        return this.httpClient.get<ICustomer[]>(this.URL_BE + "/api/customer/list?page=" + index)
+    return this.httpClient.get<ICustomer[]>(this.URL_BE + "/api/customer/list?page=" + index)
   }
+
   //LongLT lay id để xóa
   finByIdCustomers(id: number) {
-    return this.httpClient.get<ICustomer>(this.URL_BE +'/api/customer/'+ id)
+    return this.httpClient.get<ICustomer>(this.URL_BE + '/api/customer/' + id)
   }
+
   //LongLT triển khai xóa
-  deleteCustomer(idCustomer: number){
+  deleteCustomer(idCustomer: number) {
     console.log(idCustomer)
-    return this.httpClient.delete(this.URL_BE + '/api/customer/delete/'+ idCustomer);
+    return this.httpClient.delete(this.URL_BE + '/api/customer/delete/' + idCustomer);
   }
+
   //LongLT triển khai tìm kiếm
   searchCustomer(value: string, value2: string, page: number) {
-      return this.httpClient.get<any>(this.URL_BE + '/api/customer/search?option=' + value + '&keyword=' + value2 + '&page=' + page);
+    return this.httpClient.get<any>(this.URL_BE + '/api/customer/search?option=' + value + '&keyword=' + value2 + '&page=' + page);
   }
+
   // ThangDBX lấy id
-  findPersonalId(id : number){
+  findPersonalId(id: number) {
     return this.httpClient.get(this.URL_BE + '/api/customer/view/' + id);
   }
 
 // ThangDBX update thong tin ca nhan
-  updatePersonalInfo(id : number, data : IPersonalDto): Observable<IPersonalDto> {
+  updatePersonalInfo(id: number, data: IPersonalDto): Observable<IPersonalDto> {
     return this.httpClient.patch<IPersonalDto>(this.URL_BE + '/api/customer/edit/' + id, data)
   }
 
@@ -75,8 +79,6 @@ export class CustomerService {
 
   //TinhHD update một đối tượng
   updateCustomer(id: number, data): Observable<ICustomerDto> {
-    console.log(id)
-    console.log(data)
     return this.httpClient.patch<ICustomerDto>(this.URL_BE + '/api/customer/' + id, data);
   }
 }
