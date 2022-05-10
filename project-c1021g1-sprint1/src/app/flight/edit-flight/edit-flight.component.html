@@ -196,6 +196,11 @@
                       editFlightForm.get('dateEnd').touched">
                 Không được để trống nha!
               </div>
+              <div style="color: red"
+                   *ngIf ="editFlightForm.hasError('checkDate') &&
+                      editFlightForm.get('dateEnd').touched">
+                Ngày bay không được bằng hoặc nhỏ hơn ngày hạ cánh!
+              </div>
             </div>
           </div>
           <hr class="mb-4">
