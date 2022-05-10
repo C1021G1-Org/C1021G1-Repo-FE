@@ -58,38 +58,38 @@ h6 {
 }
 
 .extra-small {
-  width: 2%;
+  width: 40px;
   font-size: 15px;
-  font-weight: bold;
 }
 
 .small {
-  width: 8%;
+  width: 125px;
   font-size: 15px;
-  font-weight: bold;
 }
 
 .medium {
-  width: 15%;
+  width: 200px;
   font-size: 15px;
-  font-weight: bold;
 }
 
 .extra-medium {
-  width: 20%;
+  width: 350px;
   font-size: 15px;
-  font-weight: bold;
+  overflow-block: hidden;
 }
 
-p {
-  width: 250px;
+.extra-medium p {
+  width: 350px;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  cursor: pointer;
 }
-p:hover {
-  overflow: visible;
-  overflow-block: auto;
+.extra-medium p:active {
+  overflow: revert;
+  color: red;
+  font-weight: bold;
+
 }
 
 .disableBtn {

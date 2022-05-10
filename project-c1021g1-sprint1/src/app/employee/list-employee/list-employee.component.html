@@ -72,22 +72,18 @@
         </thead>
         <tbody>
         <tr *ngFor="let employee of employees, index as i">
-          <th class="table-text-end">{{(i + 1) + indexEmployee * 10}}</th>
-          <td>{{employee.codeEmployee}}</td>
-          <td>{{employee.nameEmployee}}</td>
-          <td class="table-text-end">{{employee.birthdayEmployee | date: 'dd/MM/yyyy'}}</td>
-          <td>{{employee.genderEmployee ? 'Nam' : employee.genderEmployee == false ? 'Nữ' : 'Khác'}}</td>
-          <td>{{employee.emailEmployee}}</td>
-          <td class="table-text-end">{{employee.phoneEmployee | phonePipe}}</td>
-          <td>
-            <p>
-              {{employee.addressEmployee}}
-            </p>
+          <th class="table-text-end extra-small">{{(i + 1) + indexEmployee * 10}}</th>
+          <td class="small">{{employee.codeEmployee}}</td>
+          <td class="medium">{{employee.nameEmployee}}</td>
+          <td class="table-text-end small">{{employee.birthdayEmployee | date: 'dd/MM/yyyy'}}</td>
+          <td class="small">{{employee.genderEmployee ? 'Nam' : employee.genderEmployee == false ? 'Nữ' : 'Khác'}}</td>
+          <td class="medium">{{employee.emailEmployee}}</td>
+          <td class="table-text-end small">{{employee.phoneEmployee | phonePipe}}</td>
+          <td class="extra-medium">
+            <p>{{employee.addressEmployee}}</p>
           </td>
-          <td>
-            {{employee.employeeType.nameEmployeeType}}
-          </td>
-          <td class="text-center " colspan="2">
+          <td class="small">{{employee.employeeType.nameEmployeeType}}</td>
+          <td class="text-center small" colspan="2">
             <div class="dropdown">
               <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">
               </button>
@@ -99,14 +95,15 @@
             </div>
           </td>
         </tr>
-        <tr [class.display]="!checkNull">
-          <td class="text-center" colspan="10">Không tìm thấy!</td>
-        </tr>
         <tr [class.display]="checkNull">
           <td class="text-center" colspan="10">{{indexEmployee * 10 + 1}}
             - {{(totalEmployee > indexEmployee) ? ((indexEmployee + 1) * 10) : totalEmployeeRecord}}
             trên {{totalEmployeeRecord}}</td>
         </tr>
+        <tr [class.display]="!checkNull">
+          <td class="text-center" colspan="10">Không tìm thấy!</td>
+        </tr>
+
         </tbody>
       </table>
 
