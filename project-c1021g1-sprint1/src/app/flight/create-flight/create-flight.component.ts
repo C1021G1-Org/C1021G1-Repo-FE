@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {Airline} from "../model/airline";
+import {AirlineType} from "../model/airline";
 import {FlightService} from "../flight.service";
 import {Router} from "@angular/router";
 import {MatSnackBar} from "@angular/material/snack-bar";
@@ -13,7 +13,7 @@ import {AbstractControl, FormControl, FormGroup, ValidationErrors, Validators} f
 })
 export class CreateFlightComponent implements OnInit {
 
-  listAirline: Airline[];
+  listAirline: AirlineType[];
   private errorss: any;
   public codeFlightError: any;
 
@@ -29,18 +29,18 @@ export class CreateFlightComponent implements OnInit {
   createFlightForm = new FormGroup({
     codeFlight: new FormControl('', [Validators.required,
       Validators.pattern(/([VJ|VN|BB|JT])+([0-9]{4})$/)]),
-      fromFlight: new FormControl('', [Validators.required,
-        Validators.pattern(/([a-zA-Z(\\)])$/),
-        Validators.minLength(10),
-        Validators.maxLength(50)]),
-      toFlight: new FormControl('', [Validators.required,
-        Validators.pattern(/([a-zA-Z(\\)])$/),
-        Validators.minLength(10),
-        Validators.maxLength(50)]),
+    fromFlight: new FormControl('', [Validators.required,
+      Validators.pattern(/([a-zA-Z(\\)])$/),
+      Validators.minLength(10),
+      Validators.maxLength(50)]),
+    toFlight: new FormControl('', [Validators.required,
+      Validators.pattern(/([a-zA-Z(\\)])$/),
+      Validators.minLength(10),
+      Validators.maxLength(50)]),
     dateStart: new FormControl('', Validators.required),
     dateEnd: new FormControl('', Validators.required),
     airlineType: new FormControl('', Validators.required)
-  }, {validators : this.duplicate})
+  }, {validators: [this.duplicate, this.checkDate]})
 
 
   getAirlineType() {
@@ -56,6 +56,7 @@ export class CreateFlightComponent implements OnInit {
         this.snackBar.open('Thêm mới chuyến bay thành công!', '', {
           duration: 5000
         });
+        this.router.navigateByUrl("/flight")
       }, error => {
         console.log(error);
         console.log(this.createFlightForm.value)
@@ -71,13 +72,24 @@ export class CreateFlightComponent implements OnInit {
   }
 
 
- duplicate(control : AbstractControl) : ValidationErrors | null {
-  const f = control.get('fromFlight').value;
-  const t = control.get('toFlight').value;
-  return f != t ? null : {
-    'checkDuplicate': true
-  };
+  duplicate(control: AbstractControl): ValidationErrors | null {
+    const f = control.get('fromFlight').value;
+    const t = control.get('toFlight').value;
+    return f != t ? null : {
+      'checkDuplicate': true
+    };
 
-}
+  }
+
+
+  checkDate(control: AbstractControl) {
+    const dateStart = control.get('dateStart').value;
+    const dateEnd = control.get('dateEnd').value;
+    const checkDateStart = new Date(dateStart);
+    const checkDateEnd = new Date(dateEnd);
+    return checkDateStart < checkDateEnd ? null : {
+      'checkDate': true
+    };
+  }
 
 }

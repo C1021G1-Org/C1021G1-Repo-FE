@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {Observable} from "rxjs";
-import {Airline} from "./model/airline";
+import {AirlineType} from "./model/airline";
 import {Flight} from "./model/flight";
 import {FlightDto} from "./dto/flight-dto";
 
@@ -49,23 +49,23 @@ export class FlightService {
 
   //TrongHD lấy list airline
   getAirlineType() {
-    return this.http.get<Airline[]>(this.baseURL + 'listAirlineType')
+    return this.http.get<AirlineType[]>(this.baseURL + '/listAirlineType')
   }
 
   //TrongHD lấy thông tin theo id
   getInfo(id : number) {
-    return this.http.get<Flight>(this.baseURL + id)
+    return this.http.get<Flight>(this.baseURL + '/' +id)
   }
 
   //TrongHD thêm mới chuyến bay
   createFlight(flight) {
     const header = {'content-type': 'application/json'};
     const body = JSON.stringify(flight);
-    return this.http.post<FlightDto>(this.baseURL + 'create', body, {headers: header});
+    return this.http.post<FlightDto>(this.baseURL + '/create', body, {headers: header});
   }
 
   //TrongHD sửa chuyến bay
   updateFlight(id: number, data) {
-    return this.http.patch<FlightDto>(this.baseURL + 'update/' + id, data);
+    return this.http.patch<FlightDto>(this.baseURL + '/update/' + id, data);
   }
 }

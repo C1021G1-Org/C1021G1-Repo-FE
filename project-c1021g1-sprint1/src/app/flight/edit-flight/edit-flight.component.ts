@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {Airline} from "../model/airline";
+import {AirlineType} from "../model/airline";
 import {FlightService} from "../flight.service";
 import {ActivatedRoute, ParamMap, Router} from "@angular/router";
 import {MatSnackBar} from "@angular/material/snack-bar";
@@ -13,7 +13,7 @@ import {Flight} from "../model/flight";
 })
 export class EditFlightComponent implements OnInit {
 
-  listAirline: Airline[];
+  listAirline: AirlineType[];
   id;
   flight: Flight;
 
@@ -64,6 +64,7 @@ export class EditFlightComponent implements OnInit {
         this.snackBar.open('Chỉnh sửa thông tin chuyến bay thành công!', '', {
           duration: 2000
         });
+        this.router.navigateByUrl("/flight");
       })
     }
   }
